@@ -1,14 +1,15 @@
-package RepasosEnClases;
+package Trabajos;
+
 
 import java.util.Scanner;
 
-
-
-
-public class Covid {
+public class CovidTest {
+	// variables y teclado publicas
 	public static int respuesta;
 	public static Scanner teclado = new Scanner(System.in);
 	
+	
+	//funciones
 	public static void pcr() {
 	
 		
