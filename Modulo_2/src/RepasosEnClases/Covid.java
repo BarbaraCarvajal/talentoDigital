@@ -2,12 +2,19 @@ package RepasosEnClases;
 
 import java.util.Scanner;
 
-public class Covid {
 
+
+
+public class Covid {
+	public static int respuesta;
+	public static Scanner teclado = new Scanner(System.in);
 	
 	public static void pcr() {
+	
+		
 		System.out.println("¿cuál ha sido la respuesta del PCR? POSITIVO = 1 | NEGATIVO = 2");
 		int respuestaPcr = teclado.nextInt();
+		
 		if (respuestaPcr == 1){
 			System.out.println("Tendrás que hacer cuarentena de 14 días :C");
 		}else if (respuesta == 2) {
@@ -17,7 +24,7 @@ public class Covid {
 	public static void main(String[] args) {
 	
 		
-		Scanner teclado = new Scanner(System.in);
+		
 		
 		System.out.println("Ingrese su nombre: ");
 		String nombre = teclado.nextLine();
