@@ -29,6 +29,8 @@ public class Frase {
 		System.out.println("El trabajador lee el manual de seguridad interno?");
 		
 		
+		System.out.println("probando algo");
+		
 		
 		
 		
