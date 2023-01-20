@@ -1,4 +1,4 @@
-package trabajosTerminados;
+package Trabajos;
 import java.util.Scanner;
 
 class PrevencionRiesgos {
