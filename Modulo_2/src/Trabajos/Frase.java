@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Frase {
 
+
 	public static void main(String[] args) {
 		/*
 		Una compañía de seguros ha elaborado una sesión de lluvia de ideas, en las que se han planteado ciertas 
@@ -19,23 +20,51 @@ public class Frase {
 		*/
 		
 		Scanner teclado = new Scanner(System.in);
-		String respuesta;
+		String respuesta1, respuesta2;
+		//boolean condicion1, condicion2;
 		
-		System.out.println("El trabajador cuida los procedimientos de seguridad? (SI = 1 | NO = 2)");
-		respuesta = teclado.nextLine();
+		while(true) {
+			System.out.println("El trabajador cuida los procedimientos de seguridad? (SI = 1 | NO = 2)");
+			respuesta1 = teclado.nextLine();
+			
+			if (respuesta1.matches("[1]{1}")) {
+				respuesta1 = "1";
+				System.out.println("RESPUESTA: SI");
+				break;
+			}else if (respuesta1.matches("[2]{1}")) {
+				respuesta1 = "2";
+				System.out.println("RESPUESTA: NO");
+				break;
+			}else {
+				System.out.println("Ingresar una respuesta válida! (SI = 1 | NO = 2)");
+			}
+		}
 		
-		if (respuesta.matches("[1]{1}"))
+		while(true) {
+			System.out.println("El trabajador lee el manual de seguridad interno? (SI = 1 | NO = 2)");
+			respuesta2 = teclado.nextLine();
+			
+			if (respuesta2.matches("[1]{1}")) {
+				respuesta2 = "1";
+				System.out.println("RESPUESTA: SI");
+				break;
+			}else if (respuesta2.matches("[2]{1}")) {
+				respuesta2 = "2";
+				System.out.println("RESPUESTA: NO");
+				break;
+			}else {
+				System.out.println("Ingresar una respuesta válida! (SI = 1 | NO = 2)");
+			}
+		}
 		
-		System.out.println("El trabajador lee el manual de seguridad interno?");
-		
-		
-		System.out.println("probando algo");
-		
-		
-		
-		
-		//System.out.println("El trabajador ha sufrido ");
-		
+		if (respuesta1 == "1" && respuesta2 == "1") {
+			System.out.println("Es muy probabeble que este trabajador no sufra un accidente laboral");
+		}else if (respuesta1 == "2" && respuesta2 == "2"){
+			System.out.println("Trabajador con ALTO riesgo de accidente laboral");
+		}else if(respuesta1 == "1" || respuesta2 == "2") {
+			System.out.println("Trabajador con riesgo de accidente laboral, se aconseja leer el manual interno porfavor");
+		}else if (respuesta1 == "2" || respuesta2 == "1") {
+			System.out.println("Trabajador con riesgo de accidente laboral, se aconseja seguir los procedimientos de seguridad porfavor");
+		}
 	}
-
 }
