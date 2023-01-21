@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package Trabajos;
 
 import java.util.ArrayList;
@@ -28,18 +26,23 @@ import java.util.Scanner;
 
 public class Capacitaciones {
 
-	
+	// Variables globales
+
+		public static String lugar, hora, dia, duracion, asistentes;
+		public static int asist2;
+		public static String nombre, rut, direccion, comuna, telefono, nombreAsistente, edadAsistente, nonmbreCapacitacion;
+		public static Scanner teclado = new Scanner(System.in);
 
 	// FUNCION DATOS
 	public static void datosCapacitacion() {
 
 		// Ingreso y validacion del campo DIA
 
-		System.out.println("\nDATOS CAPACITACION");
-		System.out.println("-------------------------------------------");
+		System.out.println("\nFORMULARIO CAPACITACION");
+		System.out.println("\n----------------------------------------------------------");
 
 		while (true) {
-			System.out.println("Ingrese el nombre de la capacitación");
+			System.out.print("\nIngrese el nombre de la capacitación: ");
 			nonmbreCapacitacion = teclado.nextLine();
 			if (nonmbreCapacitacion.matches("[a-z A-Z 0-9]{1,}")) {
 				break;
@@ -122,16 +125,16 @@ public class Capacitaciones {
 
 	public static void datosGenerales() {
 
-		System.out.println("\n DATOS DE CAPACITACIÓN");
-		System.out.println("--------------------------------------------------");
+		System.out.println("\nDATOS DE CAPACITACIÓN");
+		System.out.println("\n----------------------------------------------------------");
 		System.out.println("\n1.- LUGAR: " + lugar.toUpperCase());
 		System.out.println("2.- DIA: " + dia.toUpperCase());
 		System.out.println("3.- HORA: " + hora);
 		System.out.println("4.- DURACION: " + duracion + " HORAS");
 		System.out.println("5.- N° ASISTENTES: " + asistentes);
 
-		System.out.println("\n DATOS DE CLIENTE");
-		System.out.println("--------------------------------------------------");
+		System.out.println("\nDATOS DE CLIENTE");
+		System.out.println("\n----------------------------------------------------------");
 		System.out.println("\n1.- NOMBRE: " + nombre.toUpperCase());
 		System.out.println("2.- RUT: " + rut);
 		System.out.println("3.- DIRECCIÓN: " + direccion.toUpperCase());
@@ -141,9 +144,11 @@ public class Capacitaciones {
 	}
 
 	public static void DatosClientes() {
+		
+		System.out.println("");
 
-		System.out.println("\nDATOS CLIENTE (EMPRESA)");
-		System.out.println("----------------------------------------");
+		System.out.println("\nFORMULARIO CLIENTE (EMPRESA)");
+		System.out.println("\n----------------------------------------------------------");
 		System.out.println("NO INGRESAR ACENTOS NI CARACTERES ESPECIALES");
 
 		while (true) {
@@ -200,11 +205,17 @@ public class Capacitaciones {
 	}
 
 	public static void DatosAsistentes() {
+		
 		int cont = 1;
-		// ArrayList<Object> listaAsistentes = new ArrayList<>();
+		
 		ArrayList<Object> lista25 = new ArrayList<>();
 		ArrayList<Object> lista35 = new ArrayList<>();
 		ArrayList<Object> lista85 = new ArrayList<>();
+		
+		System.out.println("");
+		
+		System.out.println("\nFORMULARIO DE ASISTENTES");
+		System.out.println("\n----------------------------------------------------------");
 
 		while (cont <= asist2) {
 
@@ -214,13 +225,14 @@ public class Capacitaciones {
 				if (edadAsistente.matches("[0-9]{2}")) {
 					int edadNumerica = Integer.parseInt(edadAsistente);
 					if (edadNumerica >= 18 && edadNumerica <= 85) {
-						if (edadNumerica > 17 && edadNumerica < 25) {
+						if (edadNumerica >=18 && edadNumerica <= 25) {
 							lista25.add(edadNumerica);
 							while (true) {
 								System.out.print("Ingrese nombre del asistente N°" + cont + ": ");
 								nombreAsistente = teclado.nextLine();
+								
 								if (nombreAsistente.matches("[a-z A-Z]{2,50}")) {
-									lista25.add(nombreAsistente);
+									lista25.add(nombreAsistente.toUpperCase());
 									cont = cont + 1;
 									break;
 								} else {
@@ -232,10 +244,10 @@ public class Capacitaciones {
 							lista35.add(edadNumerica);
 							while (true) {
 
-								System.out.print("\nIngrese nombre del asistente N°" + cont + ": ");
+								System.out.print("Ingrese nombre del asistente N°" + cont + ": ");
 								nombreAsistente = teclado.nextLine();
 								if (nombreAsistente.matches("[a-z A-Z]{2,50}")) {
-									lista35.add(nombreAsistente);
+									lista35.add(nombreAsistente.toUpperCase());
 									cont = cont + 1;
 									break;
 								} else {
@@ -248,10 +260,10 @@ public class Capacitaciones {
 							lista85.add(edadNumerica);
 							while (true) {
 
-								System.out.print("\nIngrese nombre del asistente N°" + cont + ": ");
+								System.out.print("Ingrese nombre del asistente N°" + cont + ": ");
 								nombreAsistente = teclado.nextLine();
 								if (nombreAsistente.matches("[a-z A-Z]{2,50}")) {
-									lista85.add(nombreAsistente);
+									lista85.add(nombreAsistente.toUpperCase());
 									cont = cont + 1;
 									break;
 								} else {
@@ -267,28 +279,27 @@ public class Capacitaciones {
 			}
 
 		}
-		//System.out.println(lista25);
-		//System.out.println(lista35);
-		//System.out.println(lista85);
-		
+		System.out.println("\n----------------------------------------------------------");
 		System.out.println("\nINSCRITOS ORDENADOS SEGÚN EDAD");
-		System.out.println("----------------------------------------");
+		System.out.println("\n----------------------------------------------------------");
+		
 		// menores de 25 años:
-		System.out.println("\n Menores de 25 años");
+		System.out.println("\nHASTA 25 AÑOS");
 		for (int x = 0; x < lista25.size(); x += 2) {
-			System.out.println("Nombre: " + lista25.get(x) + " Edad: " + lista25.get(x + 1));
+			System.out.println("\nEDAD: " + lista25.get(x) + " NOMBRE: " + lista25.get(x + 1));
 		}
 
 		// entre 26 y 35 años:
-		System.out.println("\n Entre 26 y 35 años");
+		System.out.println("");
+		System.out.println("\nENTRE 26 Y 35 AÑOS");
 		for (int x = 0; x < lista35.size(); x += 2) {
-			System.out.println("Nombre: " + lista35.get(x) + " Edad: " + lista35.get(x + 1));
+			System.out.println("\nEDAD: " + lista35.get(x) + " NOMBRE: " + lista35.get(x + 1));
 		}
 
 		// entre 26 y 35 años:
-		System.out.println("\n Mayores de 35 años");
+		System.out.println("\nMAYORES A 35 AÑOS");
 		for (int x = 0; x < lista85.size(); x += 2) {
-			System.out.println("Nombre: " + lista85.get(x) + " Edad: " + lista85.get(x + 1));
+			System.out.println("\nEDAD: " + lista85.get(x) + " NOMBRE: " + lista85.get(x + 1));
 		}
 
 	}

@@ -23,9 +23,9 @@ public class Contrasenia {
 		while(num <=2) {
 			System.out.println("Ingrese su contraseña");
 			String respuesta = teclado.nextLine();
-			if (respuesta == clave) {
+			if (respuesta.equals(clave)) {
 				System.out.println("¡Contraseña correcta!");
-				num = 2;
+				break;
 			}else if (respuesta != clave) {
 				num = num + 1;
 				if (num == 3) {
@@ -35,3 +35,6 @@ public class Contrasenia {
 		}
 	}
 }
+
+
+
