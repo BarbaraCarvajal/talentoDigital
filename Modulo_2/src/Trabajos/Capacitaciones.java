@@ -5,7 +5,19 @@ package Trabajos;
 import java.util.ArrayList;
 import java.util.Scanner;
 /**
- * 
+ *  CONTEXTO
+ *  Crear capacitación
+	Una empresa de asesorías en prevención de riesgos necesita contar con un sistema de información que le 
+	permita administrar los principales procesos que se llevan a cabo en ella día a día.
+	Dentro de las actividades que realiza, están las capacitaciones. Estas son instancias que se desarrollan 
+	para todos los clientes que posee (que corresponden generalmente a otras empresas). Por cada capacitación se 
+	desea tener registro del RUT del cliente, su nombre, dirección, comuna y número de teléfono. 
+	En cuanto a la capacitación misma, se necesita saber el día, hora, lugar, duración y cantidad de asistentes.
+	De acuerdo con la cantidad de asistentes anteriormente ingresada, se debe solicitar y el nombre y edad de los asistentes. 
+	Finalizado este proceso, debe mostrar por pantalla los datos de la empresa que pidió la capacitación, los datos de 
+	la capacitación misma, y la cantidad de personas menores a 25 años, entre 26 y 35 años y mayores a 35 años.
+	Nota: Todos los datos son obligatorios. Por tanto, debe validar que el ingreso haya sido correcto en todos los casos. 
+	Además, debe validar que la cantidad de asistentes registrada sea mayor que cero
  *
  */
 public class Capacitaciones {
@@ -14,7 +26,7 @@ public class Capacitaciones {
 	
 	public static String lugar,hora,dia,duracion,asistentes;
 	public static int asist2;
-	public static String nombre,rut, direccion, comuna, telefono, nombreAsistente, edadAsistente;
+	public static String nombre,rut, direccion, comuna, telefono, nombreAsistente, edadAsistente, nonmbreCapacitacion;
 	public static Scanner teclado = new Scanner(System.in);
 	
 	// FUNCION DATOS 
@@ -24,6 +36,17 @@ public class Capacitaciones {
 		
 		System.out.println("\nDATOS CAPACITACION");
 		System.out.println("-------------------------------------------");
+		
+		while(true){
+			System.out.println("Ingrese el nombre de la capacitación");
+			nonmbreCapacitacion = teclado.nextLine();
+			if (nonmbreCapacitacion.matches("[a-z A-Z 0-9]{1,}")) {
+				break;
+			}else {
+				System.out.println("Ingrese un nonmbre valido porfavor");
+			}
+				
+		}
 		
 		while(true) {
 		
@@ -118,6 +141,7 @@ public class Capacitaciones {
 	}
 	
 	public static void DatosClientes() {
+
 		
 		System.out.println("\nDATOS CLIENTE (EMPRESA)");
 		System.out.println("----------------------------------------");
@@ -176,59 +200,106 @@ public class Capacitaciones {
 	
 }
 	
+	
+	
+	
 	public static void DatosAsistentes() {
 		int cont = 1;
-		ArrayList<Object> listaAsistentes = new ArrayList<>();
-
+		//ArrayList<Object> listaAsistentes = new ArrayList<>();
+		ArrayList<Object> lista25 = new ArrayList<>();
+		ArrayList<Object> lista35 = new ArrayList<>();
+		ArrayList<Object> lista85 = new ArrayList<>();
+		
+		
 		while(cont <= asist2) {
-			while(true) {
-				
-				System.out.print("\nIngrese nombre del asistente N°" + cont + ": " );
-				nombreAsistente = teclado.nextLine();
-				if (nombreAsistente.matches("[a-z A-Z]{2,50}")){
-					listaAsistentes.add(nombreAsistente);
-					break;
-				}else {
-					System.out.print("¡Ingrese un nombre válido!");
-				}
-			}
 			
 			while(true) {
-				System.out.print("Ingrese la edad del asistente  N°" + cont + ": " );
+				System.out.print("\nIngrese la edad del asistente  N°" + cont + ": " );
 				edadAsistente = teclado.nextLine();
 				if(edadAsistente.matches("[0-9]{2}") ) {
 					int edadNumerica = Integer.parseInt(edadAsistente);
 					if (edadNumerica >= 18 && edadNumerica <=85) {
-						
-						listaAsistentes.add(edadNumerica);
-						break;
+						if (edadNumerica >17 && edadNumerica <25) {
+							lista25.add(edadNumerica);
+							while(true) {	
+								System.out.print("Ingrese nombre del asistente N°" + cont + ": " );
+								nombreAsistente = teclado.nextLine();
+								if (nombreAsistente.matches("[a-z A-Z]{2,50}")){
+									lista25.add(nombreAsistente);
+									cont = cont +1;
+									break;
+								}else {
+									System.out.print("¡Ingrese un nombre válido!");
+								}
+							}
+							
+						}else if(edadNumerica >25 && edadNumerica <36) {
+							lista35.add(edadNumerica);
+							while(true) {
+								
+								System.out.print("\nIngrese nombre del asistente N°" + cont + ": " );
+								nombreAsistente = teclado.nextLine();
+								if (nombreAsistente.matches("[a-z A-Z]{2,50}")){
+									lista35.add(nombreAsistente);
+									cont = cont +1;
+									break;
+								}else {
+									System.out.print("¡Ingrese un nombre válido!");
+								}
+							}
+							break;
+							
+						}else if (edadNumerica >35 && edadNumerica <=85) {
+							lista85.add(edadNumerica);
+							while(true) {
+								
+								System.out.print("\nIngrese nombre del asistente N°" + cont + ": " );
+								nombreAsistente = teclado.nextLine();
+								if (nombreAsistente.matches("[a-z A-Z]{2,50}")){
+									lista85.add(nombreAsistente);
+									cont = cont +1;
+									break;
+								}else {
+									System.out.print("¡Ingrese un nombre válido!");
+								}
+							}
+							break;
+						}
 					}
 				}else {
 					System.out.println("Ingresar una edad valida...(+18)");
 				}
 			}
-			cont = cont +1;
-		}
-		
-		//cantidad de personas menores a 25 años, entre 26 y 35 años y mayores a 35 años.
-		System.out.println("\n TODOS LOS ASISTENTES");
-		for(int x = 0; x < listaAsistentes.size(); x +=2) {
-			System.out.println("Nombre: "+listaAsistentes.get(x) + " Edad: " + listaAsistentes.get(x+1));
-			}
-		
-		/*
-		for(int x = 0; x < listaAsistentes.size(); x +=2) {
-			if (listaAsistentes.get(x+1) >=18 && listaAsistentes.get(+1) <25) {
-				System.out.println("Nombre: "+listaAsistentes.get(x) + " Edad: " + listaAsistentes.get(x+1));
-			}
 			
-			}*/
 		}
-	/**
-	 * @param args
-	 */
+		System.out.println(lista25);
+		System.out.println(lista35);
+		System.out.println(lista85);
+		
+		System.out.println("\n Asistentes por edad: ");
+		// menores de 25 años:
+		System.out.println("\n Menores de 25 años");
+		for (int x = 0; x < lista25.size(); x+=2) {
+			System.out.println("Nombre: "+lista25.get(x) + " Edad: " + lista25.get(x+1));
+		}
+		
+		// entre 26 y 35 años:
+				System.out.println("\n Entre 26 y 35 años");
+				for (int x = 0; x < lista35.size(); x+=2) {
+					System.out.println("Nombre: "+lista35.get(x) + " Edad: " + lista35.get(x+1));
+		}
+
+		// entre 26 y 35 años:
+		System.out.println("\n Mayores de 35 años");
+		for (int x = 0; x < lista85.size(); x+=2) {
+		System.out.println("Nombre: "+lista85.get(x) + " Edad: " + lista85.get(x+1));
+		}
+		
+	}
+		
+
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		datosCapacitacion();
 		DatosClientes();
