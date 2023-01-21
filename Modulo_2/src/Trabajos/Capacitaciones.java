@@ -25,14 +25,10 @@ import java.util.Scanner;
  * cantidad de asistentes registrada sea mayor que cero
  *
  */
+
 public class Capacitaciones {
 
-	// Variables globales
-
-	public static String lugar, hora, dia, duracion, asistentes;
-	public static int asist2;
-	public static String nombre, rut, direccion, comuna, telefono, nombreAsistente, edadAsistente, nonmbreCapacitacion;
-	public static Scanner teclado = new Scanner(System.in);
+	
 
 	// FUNCION DATOS
 	public static void datosCapacitacion() {
@@ -295,9 +291,6 @@ public class Capacitaciones {
 			System.out.println("Nombre: " + lista85.get(x) + " Edad: " + lista85.get(x + 1));
 		}
 
-	}
-	public static void listas() {
-		
 	}
 
 	public static void main(String[] args) {
