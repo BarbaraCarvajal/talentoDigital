@@ -27,7 +27,7 @@ public class Calculadora {
 	public static String  simbolo, suma, resta, multiplicacion, division;
 	public static Scanner teclado = new Scanner(System.in);
 	public static int num1, num2;
-	
+	public static float mod;
 	// FUNCIONES DE LAS OPERATORIAS PRINCIPALES
 	
 	public static int sumar(int a,int b) {
@@ -42,8 +42,46 @@ public class Calculadora {
 		
 	}
 	
-	public static float dividir(float a, float b) {
+	
+	/*
+	 * 
+	 * mod = n1%n2;
 		
+		while(true) {
+			
+			if(n2==0) {
+				System.out.println("No es posible sacar el modulo de un valor divisble por 0, ingresa un valor valido");
+				numeros();
+			}else {
+				break;
+			}
+		}
+		
+		System.out.println("El modulo es: " + mod);
+	}
+	 * 
+	 * */
+	
+	public static void modulo(float a, float b) {
+		
+		while(true) {
+			float mod = a%b;
+			if (b == 0) {
+				System.out.println("El segundo número no puede ser 0, intene otra vez...");
+				pedirNumeros();
+			}else {
+				break;
+			}
+		}
+		System.out.println("EL modulo entre "+a+" y "+b+" es: "+mod);
+	}
+	public static float dividir(float a, float b) {
+		if (b == 0) {
+			
+			System.out.println("Imposible dividir por 0");
+			System.out.println("Ingrese de nuevo sus numeros: ");
+			pedirNumeros();
+		}
 		return a/b;
 	}
 	
@@ -112,6 +150,12 @@ public class Calculadora {
 				case ":":{
 					System.out.println("Operación seleccionada: DIVISIÓN");
 					System.out.println("La división entre "+num1+" y "+num2+ " es: " +dividir(num1,num2)); 
+					
+					break;
+				}
+				case "/":{
+					System.out.println("Operación seleccionada: MODULO");
+					System.out.println("El modulo entre "+num1+" y "+num2+ " es: " +modulo(num1,num2)); 
 					
 					break;
 				}
