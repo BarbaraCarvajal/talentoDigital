@@ -40,38 +40,14 @@ public class Calculadora {
 	}
 
 	public static float modulo(float a, float b) {
-
-		while (true) {
-			resultado = a % b;
-			if (b == 0) {
-				System.out.println("El segundo número no puede ser 0, intente otra vez...");
-				pedirNumeros();
-			} else {
-				break;
-			}
-		}
-		return resultado;
+		return a%b;
 	}
 
-	public static void dividir() {
-
-		while (true) {
-
-			resultado = num1 / num2;
-
-			if (num2 == 0) {
-				System.out.println("No es posible dividir por 0, ingresa un valor diferente.");
-				pedirNumeros();
-			} else {
-				break;
-			}
-		}
-		System.out.println("La división es: " + resultado);
+	public static float dividir(float a, float b) {
+		return a/ b;
 	}
 
 	public static void pedirNumeros() {
-
-		// -?\\d+
 
 		// pedir numeros:
 
@@ -101,6 +77,17 @@ public class Calculadora {
 				+ "	• Módulo (/)");
 	}
 
+	public static void verificacion0() {
+		while(true) {
+			if (num2 != 0) {
+				break;
+			}else {
+				System.out.println("El segundo numero no puede ser 0, intentelo otra vez...");
+				pedirNumeros();
+			}
+		}
+	}
+	
 	public static void pedirSimbolo() {
 		while (true) {
 			System.out.println("Ingrese el simbolo de la operación que desea realizar");
@@ -124,16 +111,18 @@ public class Calculadora {
 			}
 			case ":": {
 				System.out.println("Operación seleccionada: DIVISIÓN");
-				System.out.println("La division de " + num1 + " y " + num2 + " es: ");
-				dividir();
+				
+				
+				verificacion0();
+				System.out.println("La division de " + num1 + " y " + num2 + " es: "+dividir(num1,num2));
 				break;
 			}
 			case "/": {
 				System.out.println("Operación seleccionada: MODULO");
-				System.out.println("El modulo entre " + num1 + " y " + num2 + " es: " + modulo(num1, num2));
+				verificacion0();
+				System.out.println("El modulo entre " + num1 + " y " + num2 + " es: "+modulo(num1,num2));
 				break;
 			}
-
 			default: {
 
 				System.out.println("Opcion incorrecta");
