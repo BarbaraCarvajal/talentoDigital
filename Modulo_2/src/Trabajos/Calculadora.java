@@ -23,7 +23,7 @@ public class Calculadora {
 	public static String simbolo, suma, resta, multiplicacion, division;
 	public static Scanner teclado = new Scanner(System.in);
 	public static int num1, num2;
-	public static float mod, resultado, resultado1;
+	
 	// FUNCIONES DE LAS OPERATORIAS PRINCIPALES
 
 	public static int sumar(int a, int b) {
@@ -40,32 +40,35 @@ public class Calculadora {
 	}
 
 	public static float modulo(float a, float b) {
-		return a % b;
+		return a%b;
 	}
 
 	public static float dividir(float a, float b) {
-		return a / b;
+		return a/ b;
 	}
 
-	public static void ingresarNumeros() {
+	public static void pedirNumeros() {
+
+		// pedir numeros:
+
 		while (true) {
 			try {
-
+				System.out.println("Primer número: ");
 				num1 = Integer.parseInt(teclado.nextLine());
 				break;
 			} catch (NumberFormatException e) {
 				System.out.println("Ingresar un numero válido...");
 			}
 		}
-	}
-
-	public static void pedirNumeros() {
-
-		// pedir numeros:
-		System.out.println("Primer número: ");
-		ingresarNumeros();
-		System.out.println("Segundo número: ");
-		ingresarNumeros();
+		while (true) {
+			try {
+				System.out.println("Segundo número: ");
+				num2 = Integer.parseInt(teclado.nextLine());
+				break;
+			} catch (NumberFormatException e) {
+				System.out.println("Ingresar un numero válido...");
+			}
+		}
 	}
 
 	public static void mostrarOpciones() {
@@ -75,58 +78,65 @@ public class Calculadora {
 	}
 
 	public static void verificacion0() {
-		while (true) {
+		while(true) {
 			if (num2 != 0) {
 				break;
-			} else {
+			}else {
 				System.out.println("El segundo numero no puede ser 0, intentelo otra vez...");
 				pedirNumeros();
 			}
 		}
 	}
-
+	
 	public static void pedirSimbolo() {
-		while (true) {
+		boolean condicion = true;
+		while (condicion) {
 			System.out.println("Ingrese el simbolo de la operación que desea realizar");
 			simbolo = teclado.nextLine();
 
 			switch (simbolo) {
-			case "+": {
-				System.out.println("Operación seleccionada: SUMA");
-				System.out.println("La suma de " + num1 + " y " + num2 + " es: " + sumar(num1, num2));
-				break;
-			}
-			case "-": {
-				System.out.println("Operación seleccionada: RESTA");
-				System.out.println("La resta de " + num1 + " y " + num2 + " es: " + restar(num1, num2));
-				break;
-			}
-			case "x": {
-				System.out.println("Operación seleccionada: MULTIPLICACIÓN");
-				System.out.println("La multiplicación de " + num1 + " y " + num2 + " es: " + multiplicar(num1, num2));
-				break;
-			}
-			case ":": {
-				System.out.println("Operación seleccionada: DIVISIÓN");
+				case "+": 
+					System.out.println("Operación seleccionada: SUMA");
+					System.out.println("La suma de " + num1 + " y " + num2 + " es: " + sumar(num1, num2));
+					condicion = false;
+					break;
+				
+				case "-": 
+					System.out.println("Operación seleccionada: RESTA");
+					System.out.println("La resta de " + num1 + " y " + num2 + " es: " + restar(num1, num2));
+					condicion = false;
+					break;
+				
+				case "x": 
+					System.out.println("Operación seleccionada: MULTIPLICACIÓN");
+					System.out.println("La multiplicación de " + num1 + " y " + num2 + " es: " + multiplicar(num1, num2));
+					condicion = false;
+					break;
+					
+					
+				
+				case ":": 
+					System.out.println("Operación seleccionada: DIVISIÓN");
+					verificacion0();
+					System.out.println("La division de " + num1 + " y " + num2 + " es: "+dividir(num1,num2));
+					condicion = false;
+					break;
+				
+				case "/": 
+					System.out.println("Operación seleccionada: MODULO");
+					verificacion0();
+					System.out.println("El modulo entre " + num1 + " y " + num2 + " es: "+modulo(num1,num2));
+					condicion = false;
+					break;
+				
+				default: 
+	
+					System.out.println("Opcion incorrecta");
+			
 
-				verificacion0();
-				System.out.println("La division de " + num1 + " y " + num2 + " es: " + dividir(num1, num2));
-				break;
 			}
-			case "/": {
-				System.out.println("Operación seleccionada: MODULO");
-				verificacion0();
-				System.out.println("El modulo entre " + num1 + " y " + num2 + " es: " + modulo(num1, num2));
-				break;
-			}
-			default: {
-
-				System.out.println("Opcion incorrecta");
-			}
-
-			}
-			System.out.println("Fin de la calculadora");
-			break;
+			
+			
 		}
 	}
 
@@ -135,6 +145,6 @@ public class Calculadora {
 		pedirNumeros();
 		mostrarOpciones();
 		pedirSimbolo();
-
+		System.out.println("Fin de la calculadora");
 	}
 }

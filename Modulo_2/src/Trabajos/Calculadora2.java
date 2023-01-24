@@ -10,8 +10,7 @@ import java.util.Scanner;
 public class Calculadora2 {
 	
 	static Scanner sr = new Scanner(System.in);
-	static float n1, n2,suma,resta,mult,mod;
-	static double div;
+	static float n1, n2,suma,resta,mult,mod, div;
 	static String operacion;
 
 	// Funciones 
@@ -51,45 +50,51 @@ public class Calculadora2 {
 		
 		suma = n1 + n2;
 		
-		System.out.println("La suma es: " + suma);
+		
+		System.out.println("\n--------------------------------------------------------------------------------");
+		System.out.println("La suma de " +  n1 + " y " + n2 + " es: " +  suma);
 	}
 	
 	static void resta() {
 		
 		resta = n1 - n2;
 		
-		System.out.println("La resta es: " + resta);
+		System.out.println("\n--------------------------------------------------------------------------------");
+		System.out.println("La resta de " +  n1 + " y " + n2 + " es: " +  resta);
 	}
 	
 	static void mult() {
 		
 		mult = n1 * n2;
 		
-		System.out.println("La multiplicación es: " + mult);
+		System.out.println("\n--------------------------------------------------------------------------------");
+		System.out.println("La multiplicación de " +  n1 + " y " + n2 + " es: " + mult);
 	}
 	
 	static void div() {
 		
-		div = n1/n2; 
-		
 		while(true) {
-		
-		if(n2 == 0) {
-			System.out.println("No divisible por 0, vuelva a ingresar valores validos");
-			numeros();
+			
+			div = n1/n2;
+			
+			if(n2==0) {
+				System.out.println("\nNo es posible dividir por 0, ingresa un valor diferente.");
+				numeros();
+			}else {
+				break;
+			}
 		}
-		else {
-			break;
-		}
+		System.out.println("\n--------------------------------------------------------------------------------");
+		System.out.println("La división de " +  n1 + " y " + n2 + " es: " + div);
 	}
-		System.out.println("La división es: " + div);
-	}
+	
 	
 	static void mod() {
 		
-		mod = n1%n2;
 		
 		while(true) {
+			
+			mod = n1%n2;
 			
 			if(n2==0) {
 				System.out.println("No es posible sacar el modulo de un valor divisble por 0, ingresa un valor valido");
@@ -98,9 +103,9 @@ public class Calculadora2 {
 				break;
 			}
 		}
-		
-		System.out.println("El modulo es: " + mod);
+		System.out.println("\nEl modulo de " +  n1 + " y " + n2 + " es: "  + mod);
 	}
+	
 	
 	static void menu() {
 		
@@ -117,42 +122,38 @@ public class Calculadora2 {
 		System.out.println("\nElige el simbolo de la operacion : ");
 		operacion = sr.nextLine();
 		
-			switch(operacion) {
-			
-				case "+":
-					suma();
-					break;
-					
-				case "-":
-					resta();
-					break;
-					
-				case "*":
-					mult();
-					break;
-					
-				case "/":
-					div();
-					break;
-					
-				case "%":
-					mod();
-					break;
-					
-				default:{
-					System.out.println("Opcion incorrecta");
-				}
+			if(operacion.equals("+")){
+				suma();
+				break;
 			}
-			break;
-		}
+			if(operacion.equals("-")) {
+				resta();
+				break;
+			}
+			if(operacion.equals("*")) {
+				mult();
+				break;
+			}
+			if(operacion.equals("/")) {
+				div();
+				break;
+			}
+			if(operacion.equals("%")) {
+				mod();
+				break;
+			}
+			else {
+				System.out.println("Opcion invalida, vuelva a ingresar un signo valido");
+			}
 	}
+	}
+		
 	
 	public static void main(String[] args) {
 		
 		numeros();
 		menu();
 		operador();
-		
 	}
 
 }
