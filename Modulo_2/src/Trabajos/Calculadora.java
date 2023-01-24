@@ -126,14 +126,12 @@ public class Calculadora {
 			default: {
 
 				System.out.println("Opcion incorrecta");
-
 			}
 
 			}
 			System.out.println("Fin de la calculadora");
 			break;
 		}
-
 	}
 
 	public static void main(String[] args) {
