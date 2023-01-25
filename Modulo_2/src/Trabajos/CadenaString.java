@@ -19,15 +19,15 @@ public class CadenaString {
 		 */
 
 		Scanner teclado = new Scanner(System.in);
-		//String letraSola;
+		// String letraSola;
 		int contadorVocales = 0;
 		int contadorConsonantes = 0;
-		
+
 		ArrayList<Object> lista = new ArrayList();
 		ArrayList<Object> listaVocales = new ArrayList();
 		ArrayList<Object> listaConsonantes = new ArrayList();
-		
-		while(true) {
+
+		while (true) {
 			System.out.println("Ingrese su frase: ");
 			String frase = teclado.nextLine().toLowerCase();
 			if (frase.matches("[a-zA-Z\\s]+$")) {
@@ -36,44 +36,37 @@ public class CadenaString {
 					char caracter = frase.charAt(i);
 					lista.add(caracter);
 					String letra = Character.toString(caracter);
-					if (letra.equals("a") || letra.equals("e") || letra.equals("i") || letra.equals("o") || letra.equals("u")) {
+					if (letra.equals("a") || letra.equals("e") || letra.equals("i") || letra.equals("o")
+							|| letra.equals("u")) {
 						listaVocales.add(letra);
-						contadorVocales = contadorVocales+1;
-					}else {
+						contadorVocales = contadorVocales + 1;
+					} else {
 						listaConsonantes.add(letra);
-						contadorConsonantes = contadorConsonantes+1;
+						if (letra.equals(" ")) {
+							listaConsonantes.remove(letra);
+						}else {
+							contadorConsonantes = contadorConsonantes + 1;
+						}
+						
 					}
 				}
-				//imprimir letra por letra 
+				// imprimir letra por letra
 				System.out.println("Imprimir letra por letra ");
-				lista.forEach(elemento -> System.out.print(" "+elemento));
-				
-				
+				lista.forEach(elemento -> System.out.print(" " + elemento));
+
 				System.out.println("\nVocales en la frase");
-				listaVocales.forEach(elemento -> System.out.print(" "+elemento));
-				System.out.println("\nTotal Vocales: "+contadorVocales+"\n");
-				
-				
+				listaVocales.forEach(elemento -> System.out.print(" " + elemento));
+				System.out.println("\nTotal Vocales: " + contadorVocales + "\n");
+
 				System.out.println("Consonantes en la frase");
-				listaConsonantes.forEach(elemento -> System.out.print(" "+elemento));
-				System.out.println("\nTotal Consonantes: "+contadorConsonantes+"\n");
+				listaConsonantes.forEach(elemento -> System.out.print(" " + elemento));
+				System.out.println("\nTotal Consonantes: " + contadorConsonantes + "\n");
 				break;
-			}else {
+			} else {
 				System.out.println("Ingresar sólo letras... no números, no signos especiales ni tildes !!");
 			}
 
 		}
-		
 
-		
-	
-		
-		
-	
-	}	
 	}
-	
-
-
-
-
+}

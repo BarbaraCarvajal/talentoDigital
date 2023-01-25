@@ -28,7 +28,8 @@ public class Alumnos {
 			
 			nombre = teclado.nextLine().toUpperCase();
 			if (nombre.equals("SALIR")) {
-				System.out.println("Ud ha seleccionado la opción de no continuar con el ingreso de más alumnos");
+				System.out.println("Ud ha seleccionado la opción de no continuar "
+						+ "con el ingreso de más alumnos");
 				
 				break;
 			}else {
