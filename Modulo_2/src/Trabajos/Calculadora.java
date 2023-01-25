@@ -23,7 +23,7 @@ public class Calculadora {
 	public static String simbolo, suma, resta, multiplicacion, division;
 	public static Scanner teclado = new Scanner(System.in);
 	public static int num1, num2;
-	
+
 	// FUNCIONES DE LAS OPERATORIAS PRINCIPALES
 
 	public static int sumar(int a, int b) {
@@ -36,15 +36,14 @@ public class Calculadora {
 
 	public static int multiplicar(int a, int b) {
 		return a * b;
-
 	}
 
 	public static float modulo(float a, float b) {
-		return a%b;
+		return a % b;
 	}
 
 	public static float dividir(float a, float b) {
-		return a/ b;
+		return a / b;
 	}
 
 	public static void pedirNumeros() {
@@ -73,21 +72,21 @@ public class Calculadora {
 
 	public static void mostrarOpciones() {
 		System.out.println("Operaciones disponibles: ");
-		System.out.println("" + " • Suma (+)\n" + "	• Resta (-)\n" + "	• Multiplicación (x)\n" + "	• División (:)\n"
+		System.out.println(" • Suma (+)\n" + "	• Resta (-)\n" + "	• Multiplicación (x)\n" + "	• División (:)\n"
 				+ "	• Módulo (/)");
 	}
 
 	public static void verificacion0() {
-		while(true) {
+		while (true) {
 			if (num2 != 0) {
 				break;
-			}else {
+			} else {
 				System.out.println("El segundo numero no puede ser 0, intentelo otra vez...");
 				pedirNumeros();
 			}
 		}
 	}
-	
+
 	public static void pedirSimbolo() {
 		boolean condicion = true;
 		while (condicion) {
@@ -95,53 +94,48 @@ public class Calculadora {
 			simbolo = teclado.nextLine();
 
 			switch (simbolo) {
-				case "+": 
-					System.out.println("Operación seleccionada: SUMA");
-					System.out.println("La suma de " + num1 + " y " + num2 + " es: " + sumar(num1, num2));
-					condicion = false;
-					break;
-				
-				case "-": 
-					System.out.println("Operación seleccionada: RESTA");
-					System.out.println("La resta de " + num1 + " y " + num2 + " es: " + restar(num1, num2));
-					condicion = false;
-					break;
-				
-				case "x": 
-					System.out.println("Operación seleccionada: MULTIPLICACIÓN");
-					System.out.println("La multiplicación de " + num1 + " y " + num2 + " es: " + multiplicar(num1, num2));
-					condicion = false;
-					break;
-					
-					
-				
-				case ":": 
-					System.out.println("Operación seleccionada: DIVISIÓN");
-					verificacion0();
-					System.out.println("La division de " + num1 + " y " + num2 + " es: "+dividir(num1,num2));
-					condicion = false;
-					break;
-				
-				case "/": 
-					System.out.println("Operación seleccionada: MODULO");
-					verificacion0();
-					System.out.println("El modulo entre " + num1 + " y " + num2 + " es: "+modulo(num1,num2));
-					condicion = false;
-					break;
-				
-				default: 
-	
-					System.out.println("Opcion incorrecta");
-			
+			case "+":
+				System.out.println("Operación seleccionada: SUMA");
+				System.out.println("La suma de " + num1 + " y " + num2 + " es: " + sumar(num1, num2));
+				condicion = false;
+				break;
+
+			case "-":
+				System.out.println("Operación seleccionada: RESTA");
+				System.out.println("La resta de " + num1 + " y " + num2 + " es: " + restar(num1, num2));
+				condicion = false;
+				break;
+
+			case "x":
+				System.out.println("Operación seleccionada: MULTIPLICACIÓN");
+				System.out.println("La multiplicación de " + num1 + " y " + num2 + " es: " + multiplicar(num1, num2));
+				condicion = false;
+				break;
+
+			case ":":
+				System.out.println("Operación seleccionada: DIVISIÓN");
+				verificacion0();
+				System.out.println("La division de " + num1 + " y " + num2 + " es: " + dividir(num1, num2));
+				condicion = false;
+				break;
+
+			case "/":
+				System.out.println("Operación seleccionada: MODULO");
+				verificacion0();
+				System.out.println("El modulo entre " + num1 + " y " + num2 + " es: " + modulo(num1, num2));
+				condicion = false;
+				break;
+
+			default:
+
+				System.out.println("Opcion incorrecta");
 
 			}
-			
-			
 		}
 	}
-
+	
 	public static void main(String[] args) {
-
+		System.out.println("Inicio de la calculadora\n");
 		pedirNumeros();
 		mostrarOpciones();
 		pedirSimbolo();
