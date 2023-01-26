@@ -3,6 +3,19 @@ package Trabajos;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// CONTEXTO:
+/*
+ * Escribe un programa en Java que solicite el ingreso de nombres de varios
+ * alumnos y la calificación en una prueba de cada uno por teclado. No se sabe
+ * cuantos alumnos tiene el curso, por lo que el programa debe terminar cuando
+ * se ingrese un alumno con nombre igual a “SALIR”. Al suceder lo anterior, se
+ * debe desplegar por consola el promedio de curso obtenido, el nombre del
+ * alumno con la menor nota y el nombre del alumno con la mayor nota. Es
+ * importante validar que se ingrese siempre más de un alumno.
+ */
+
+
+
 public class Alumnos {
 	// variables, condiciones, listas y scanner
 	static Scanner teclado = new Scanner(System.in);
@@ -15,15 +28,20 @@ public class Alumnos {
 	// static ArrayList<Object> listaNotas = new ArrayList<>();
 
 	public static void nombreAlumnoNotaAlumno() {
-
+		// se usa while en este caso para que se pidan datos hasta que se le de fin al ciclo (con la palabra salir)
 		while (true) {
 
 			System.out.println("Ingrese el nombre del alumno n° " + num + ": ");
-			nombre = teclado.nextLine().toUpperCase();
+			nombre = teclado.nextLine().toUpperCase(); // pedimos el dato por teclado y lo transformamos a mayuscula
 
-			if (!nombre.matches("[a-z A-Z]{2,}")) {
+			// se filtra que lo ingresado sea correcto con expresiones regulares, en este caso que sean letras de la 
+			// a la z y que minimo sean 2 letras.
+			if (!nombre.matches("[a-z A-Z]{2,}")) { 
 				System.out.println("Tiene que ingresar por lo menos 1 alumno...");
 			} else {
+				
+				// gracias al contador vemos si se cumple el punto de que sean minimo 2 alumnos ingresados, ademas
+				// sirve para despues usarlo en la formula del promedio de notas.
 				if (nombre.equals("SALIR") && contador >= 2) {
 					System.out.println("Ud ha seleccionado escrito SALIR por ende, adios! :D");
 					float promedio = sumaNotas / contador;
@@ -35,15 +53,17 @@ public class Alumnos {
 				} else if (nombre.equals("SALIR") && contador < 2) {
 					System.out.println("Tiene que ingresar un minimo de 2 alumnos...");
 				} else {
-					listaNombreYnotas.add(nombre);
-					num += 1;
+					listaNombreYnotas.add(nombre); //agregamos el dato nombre a la lista.
+					num += 1; // contador para la petición de alumnos.
 					while (true) {
-						try {
+						try { // Se usa el try para "intenta" hacer lo que sigue y si no funciona que no se caiga
+							  // nuestro programa, y en cambio nos mande un mensaje personalizado, todo esto dentro 
+							  // de un while para que se vuelva a pedir el dato.
 							while (true) {
 								System.out.println("Ingrese la nota de " + nombre + ": ");
 								nota = Integer.parseInt(teclado.nextLine());
 								if (nota >= 10 && nota <= 70) {
-									listaNombreYnotas.add(nota);
+									listaNombreYnotas.add(nota); 
 									contador = contador + 1;
 									sumaNotas = sumaNotas + nota;
 									if (nota > notaMasAlta) {
@@ -66,21 +86,11 @@ public class Alumnos {
 				}
 			}
 		}
-		System.out.println(listaNombreYnotas);
+		//System.out.println(listaNombreYnotas);
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		/*
-		 * Escribe un programa en Java que solicite el ingreso de nombres de varios
-		 * alumnos y la calificación en una prueba de cada uno por teclado. No se sabe
-		 * cuantos alumnos tiene el curso, por lo que el programa debe terminar cuando
-		 * se ingrese un alumno con nombre igual a “SALIR”. Al suceder lo anterior, se
-		 * debe desplegar por consola el promedio de curso obtenido, el nombre del
-		 * alumno con la menor nota y el nombre del alumno con la mayor nota. Es
-		 * importante validar que se ingrese siempre más de un alumno.
-		 */
-
+	
 		System.out.println("holi");
 		nombreAlumnoNotaAlumno();
 	}
