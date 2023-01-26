@@ -1,4 +1,4 @@
-package Trabajos;
+package RepasosEnClases;
 
 import java.util.ArrayList;
 //import java.util.Scanner;

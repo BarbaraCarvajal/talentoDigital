@@ -45,6 +45,12 @@ public class Alumnos {
 				if (nombre.equals("SALIR") && contador >= 2) {
 					System.out.println("Ud ha seleccionado escrito SALIR por ende, adios! :D");
 					float promedio = sumaNotas / contador;
+					System.out.println("--------------------");
+					System.out.println("Datos ingresados: ");
+					for (int x = 0; x < listaNombreYnotas.size(); x += 2) {
+						System.out.println("Nombre: " + listaNombreYnotas.get(x) + "\nNota: " + listaNombreYnotas.get(x + 1));
+					}
+					System.out.println("--------------------");
 					System.out.println("Promedio del curso: " + promedio);
 					System.out.println("Nota más alta: " + notaMasAlta + " del alumno " + alumno1);
 					System.out.println("Nota más baja: " + notaMasBaja + " del alumno " + alumno2);
