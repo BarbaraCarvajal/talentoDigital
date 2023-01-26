@@ -39,15 +39,14 @@ public class CadenaString {
 					if (letra.equals("a") || letra.equals("e") || letra.equals("i") || letra.equals("o")
 							|| letra.equals("u")) {
 						listaVocales.add(letra);
-						contadorVocales = contadorVocales + 1;
+						contadorVocales+=1;
 					} else {
 						listaConsonantes.add(letra);
 						if (letra.equals(" ")) {
 							listaConsonantes.remove(letra);
 						}else {
-							contadorConsonantes = contadorConsonantes + 1;
+							contadorConsonantes+=1;
 						}
-						
 					}
 				}
 				// imprimir letra por letra
@@ -63,7 +62,7 @@ public class CadenaString {
 				System.out.println("\nTotal Consonantes: " + contadorConsonantes + "\n");
 				break;
 			} else {
-				System.out.println("Ingresar sólo letras... no números, no signos especiales ni tildes !!");
+				System.out.println("Ingresar sólo letras... no números, no signos especiales ni tildes y obviamente no dejar la frase vacía!!");
 			}
 
 		}

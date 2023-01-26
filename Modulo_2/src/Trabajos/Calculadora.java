@@ -89,6 +89,7 @@ public class Calculadora {
 
 	public static void pedirSimbolo() {
 		boolean condicion = true;
+		
 		while (condicion) {
 			System.out.println("Ingrese el simbolo de la operación que desea realizar");
 			simbolo = teclado.nextLine();

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package trabajosTerminados;
+package Trabajos;
 import java.util.Scanner;
 /**
  * @author barbaracarvajalsaez junto a Paloma Gonzalez 
