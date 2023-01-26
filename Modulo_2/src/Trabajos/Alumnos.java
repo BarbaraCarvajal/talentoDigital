@@ -37,7 +37,7 @@ public class Alumnos {
 			// se filtra que lo ingresado sea correcto con expresiones regulares, en este caso que sean letras de la 
 			// a la z y que minimo sean 2 letras.
 			if (!nombre.matches("[a-z A-Z]{2,}")) { 
-				System.out.println("Tiene que ingresar por lo menos 1 alumno...");
+				System.out.println("Ingrese un nombre válido porfavor...");
 			} else {
 				
 				// gracias al contador vemos si se cumple el punto de que sean minimo 2 alumnos ingresados, ademas
@@ -97,7 +97,8 @@ public class Alumnos {
 
 	public static void main(String[] args) {
 	
-		System.out.println("holi");
+		System.out.println("Bienvenido, ingrese los nombres y notas de los alumnos a continuación");
 		nombreAlumnoNotaAlumno();
+		System.out.println("Hasta luego :D");
 	}
 }

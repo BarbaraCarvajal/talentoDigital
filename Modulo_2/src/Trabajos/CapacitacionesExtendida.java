@@ -1,5 +1,6 @@
 package Trabajos;
 
+import java.util.Scanner;
 
 /*
  * 
@@ -34,9 +35,50 @@ package Trabajos;
 
 public class CapacitacionesExtendida {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	static Scanner teclado = new Scanner(System.in);
+	static String nombreEmpresa, fecha, hora, duracion;
+	static int cantidadAsistentes;
+	static String[][] datos;
+
+	public static void datosCapacitacion() {
+
+		System.out.println("Ingrese el nombre de la empresa: ");
+		nombreEmpresa = teclado.nextLine();
+		System.out.println("Ingrese la fecha en la cual se realizará la capacitación: ");
+		fecha = teclado.nextLine();
+		System.out.println("Ingrese la hora de la capacitación");
+		hora = teclado.nextLine();
+		System.out.println("Ingrese la duración de la capacitación (ejemplo: 2)");
+		duracion = teclado.nextLine();
+		System.out.println("Ingrese la cantidad de asistentes");
+		cantidadAsistentes = teclado.nextInt();
+		teclado.nextLine();
+		
+		datos = new String[cantidadAsistentes][2];
 
 	}
 
+	public static void ingresoNombreYnotas() {
+		 
+		for (int i = 0; i < cantidadAsistentes; i++) {
+			System.out.print("Ingrese el nombre del asistente " + (i + 1) + ": ");
+			datos[i][0] = teclado.nextLine();
+			System.out.print("Ingrese la calificación (1-7) del asistente " + (i + 1) + ": ");
+			datos[i][1] = teclado.nextLine();
+		}
+
+	}
+	
+	
+	 public static void impresionDatos() {
+	        for (int x = 0; x < cantidadAsistentes; x++) {
+	            System.out.println("Nombre: " + datos[x][0] + "\nNota: " + datos[x][1]);
+	        }
+	    }
+
+	public static void main(String[] args) {
+		datosCapacitacion();
+		ingresoNombreYnotas();
+		impresionDatos();
+	}
 }
