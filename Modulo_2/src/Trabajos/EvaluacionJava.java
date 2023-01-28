@@ -7,9 +7,9 @@ public class EvaluacionJava {
 	static String nombre, fechaNac, run, direccion, telefono, cantEmpleados,
 				  aniosExperiencia, departamento, funcion, nombreSuperior;
 	static String [][] listaUsuarios = new String[100][10];
-	static String [][] listaClientes = new String[100][10];
-	static String [][] listaProfesionales = new String[100][10];
-	static String [][] listaAdministrativos = new String[100][10];
+	//static String [][] listaClientes = new String[100][10];
+	//static String [][] listaProfesionales = new String[100][10];
+	//static String [][] listaAdministrativos = new String[100][10];
 
 	
 	
@@ -120,10 +120,11 @@ public class EvaluacionJava {
 		
 		
 		nombre = detectarLetras("Ingrese el nombre: ", teclado);
-		//listaClientes[i][0] = nombre;
 		fechaNac = detectarFecha("Ingrese la fecha de nacimiento", teclado);
 		run = detectarRun("Ingrese el run del usuario, sin digito verificador (7-8 digitos):",teclado);
-		
+		listaUsuarios[0][0] = nombre;
+		listaUsuarios[0][1] = fechaNac;
+		listaUsuarios[0][2] = run;
 	
 		System.out.println("★━━━━━━━━━━━━━━━━━━━━★");
 		System.out.println("¿Qué tipo de usuario es "+nombre+"? ");
@@ -159,6 +160,10 @@ public class EvaluacionJava {
 		direccion = detectarDireccion("Ingrese la dirección: ", teclado);
 		telefono = detectarTelefono("Ingrese telefono: ", teclado);
 		cantEmpleados = detectarNum("Cantidad empleados si es que corresponde:", teclado);
+		listaUsuarios[0][3] = direccion;
+		listaUsuarios[0][4] = telefono;
+		listaUsuarios[0][5] = cantEmpleados;
+				
 	}
 	
 	public static void datosProfesional() {
@@ -247,6 +252,15 @@ public class EvaluacionJava {
 
 	public static void main(String[] args) {
 		menu();
+		
+		for (int fila = 0; fila < listaUsuarios.length; fila++) {
+		      for (int columna = 0; columna < listaUsuarios[fila].length; columna++) {
+		        System.out.print(listaUsuarios[fila][columna] + " ");
+		      }
+		      System.out.println();
+		    }
+		
+		
 	}
 
 }
