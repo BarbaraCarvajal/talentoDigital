@@ -69,7 +69,6 @@ public class CapacitacionesExtendida {
 
 	}
 	
-	
 	 public static void impresionDatos() {
 	        for (int x = 0; x < cantidadAsistentes; x++) {
 	            System.out.println("Nombre: " + datos[x][0] + "\nNota: " + datos[x][1]);
