@@ -7,10 +7,7 @@ public class EvaluacionJava {
 	static Scanner teclado = new Scanner(System.in);
 	static String nombre, fechaNac, run, direccion, telefono, cantEmpleados,
 				  aniosExperiencia, departamento, funcion, nombreSuperior;
-	static int contadorClientes = 0;
-	static int contadorProfesionales = 0;
-	static int contadorAdministrativos = 0;
-	static int contadorUsuarios = 0;
+	static int contadorClientes = 0, contadorProfesionales = 0, contadorAdministrativos = 0, contListaGeneral = 0;
 	static ArrayList <ArrayList<String>>   listaGeneral = new ArrayList <ArrayList<String>>();
 	static ArrayList <String>  listaUsuarios = new ArrayList <String>();
 	static ArrayList <String>  listaClientes = new ArrayList <String>();
@@ -171,7 +168,7 @@ public class EvaluacionJava {
 		listaClientes.add(telefono);
 		listaClientes.add(cantEmpleados);
 		contadorClientes = contadorClientes +1;
-		contadorUsuarios = contadorUsuarios +1;
+		
 		
 				
 	}
@@ -187,9 +184,7 @@ public class EvaluacionJava {
 		listaProfesionales.add(aniosExperiencia);
 		listaProfesionales.add(departamento);
 		contadorProfesionales= contadorProfesionales +1;
-		contadorUsuarios = contadorUsuarios +1;
-		
-		
+	
 	}
 	
 	public static void datosAdministrativo() {
@@ -203,8 +198,7 @@ public class EvaluacionJava {
 		listaAdministrativos.add(funcion);
 		listaAdministrativos.add(nombreSuperior);
 		contadorAdministrativos = contadorAdministrativos +1;
-		contadorUsuarios = contadorUsuarios +1;
-		
+	
 	}
 	
 	public static void listaGeneral() {
@@ -213,6 +207,47 @@ public class EvaluacionJava {
 		listaGeneral.add(listaProfesionales);
 		
 	}
+	
+	public static void impresionContadores() {
+		System.out.println("Opcion elegida: 3 Contar usuarios por categoría");
+		System.out.println("Total usuarios: "+contListaGeneral);
+		System.out.println("Total Clientes: "+contadorClientes);
+		System.out.println("Total Profesionales: "+contadorProfesionales);
+		System.out.println("Total Administrativos: "+contadorAdministrativos);
+	}
+	
+	public static void impresionListas() {
+		
+		
+		System.out.println("\nCLIENTES");
+		for (int posicion = 0; posicion < listaClientes.size(); posicion = posicion +6) {
+			System.out.println("NONMBRE: " + listaClientes.get(posicion) + " FECHA NACIMIENTO: " + listaClientes.get(posicion + 1)
+			+" RUN: " +listaClientes.get(posicion+ 2) + " DIRECCION:  "+ listaClientes.get(posicion+3) + " TELEFONO: "+ listaClientes.get(posicion+4) + " CANTIDAD EMPLEADOS: "+listaClientes.get(posicion+ 5)  );
+		}
+	
+		System.out.println("\nPROFESIONALES");
+		for (int posicion = 0; posicion < listaProfesionales.size(); posicion = posicion +5) {
+			System.out.println("NONMBRE: " + listaProfesionales.get(posicion) + " FECHA NACIMIENTO: " + listaProfesionales.get(posicion + 1)
+			+" RUN: " +listaProfesionales.get(posicion+ 2) + " AÑOS DE EXPERIENCIA:  "+ listaProfesionales.get(posicion+3) + " DEPARTAMENTO: "+ listaProfesionales.get(posicion+4) );
+		}
+
+		System.out.println("\nADMINISTRATIVOS");
+		for (int posicion = 0; posicion < listaAdministrativos.size(); posicion = posicion +5) {
+			System.out.println("NONMBRE: " + listaAdministrativos.get(posicion) + " FECHA NACIMIENTO: " + listaAdministrativos.get(posicion + 1)
+			+" RUN: " +listaAdministrativos.get(posicion+ 2) + " FUNCIÓN:  "+ listaAdministrativos.get(posicion+3) + " NOMBRE SUPERIOR: "+ listaAdministrativos.get(posicion+4) );
+		}
+	}
+	/*
+	public static void modificarUsuario(String rut) {
+		System.out.println("Ingrese el rut del usuario que desea editar: ");
+		String leerRut = detectarRun("Ingrese el run del usuario, sin digito verificador (7-8 digitos):",teclado);
+		
+		
+		}
+		
+		
+		}
+*/
 	
 	public static void verMenu() {
 		
@@ -226,9 +261,6 @@ public class EvaluacionJava {
 					 + "▪ 5- Eliminar usuario\n" 
 					 + "▪ 6- Salir. ");
 	}
-
-	
-	
 	
 	public static void menu() {
 			
@@ -244,31 +276,27 @@ public class EvaluacionJava {
 				System.out.println("Opción elegida: 1 Registrar usuario");
 				registrarUsuario();
 				listaGeneral();
+				contListaGeneral = contListaGeneral +1;
+				break;
 			case "2":
 				System.out.println("Opcion elegida: 2 Mostrar usuarios");
-				System.out.println("Total usuarios: "+listaGeneral);
+				System.out.println("Total usuarios: ");
+				
+				for (int i = 0; i < listaGeneral.size(); i++) {
+					System.out.print(" " +listaGeneral.get(i));
+					System.out.println("");
+				}
+				
 
 				break;
 			case "3":
-				System.out.println("Opcion elegida: 3 Contar usuarios por categoría");
-				System.out.println("Total usuarios: "+listaGeneral.size());
-				System.out.println("Total Clientes: "+contadorClientes);
-				System.out.println("Total Profesionales: "+contadorProfesionales);
-				System.out.println("Total Administrativos: "+contadorAdministrativos);
-				
-				System.out.println("\nTodos los clientes: ");
-				for (int x = 0; x <= listaClientes.size(); x++) {
-					System.out.println("\nNOMBRE: " + listaClientes.get(x) + " FECHA NACIMIENTO: " + listaClientes.get(x + 1) +
-					"RUN: "+ listaClientes.get(x + 2) + " DIRECCION: "+listaClientes.get(x + 3)+" TELEFONO: " +listaClientes.get(x + 4)+
-					" CANTIDAD EMPLEADOS: "+ listaClientes.get(x + 5));
-				}
-				
-				
+				impresionContadores();
+				impresionListas();
 				
 				break;
 			case "4":
 				System.out.println("Opcion elegida: 4 Modificar usuarios");
-
+				
 				break;
 			case "5":
 				System.out.println("Opcion elegida: 5 Eliminar usuario");
@@ -276,7 +304,12 @@ public class EvaluacionJava {
 				break;
 			case "6":
 				System.out.println("Opcion elegida: 6 Salir");
-				condicion = false;
+				if (contadorClientes >= 1 && contadorAdministrativos >=1 && contadorProfesionales >=1){
+					condicion = false;
+					
+				}else {
+					System.out.println("Minimo 1 usuario por categoria!");
+				}
 				break;
 			default:
 
@@ -287,8 +320,6 @@ public class EvaluacionJava {
 	}
 
 	public static void main(String[] args) {
-		
-		
 			menu();
 	}
 }
