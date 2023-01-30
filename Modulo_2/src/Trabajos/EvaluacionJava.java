@@ -1,16 +1,21 @@
 package Trabajos;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EvaluacionJava {
 	static Scanner teclado = new Scanner(System.in);
 	static String nombre, fechaNac, run, direccion, telefono, cantEmpleados,
 				  aniosExperiencia, departamento, funcion, nombreSuperior;
-	static String [][] listaUsuarios = new String[100][10];
-	//static String [][] listaClientes = new String[100][10];
-	//static String [][] listaProfesionales = new String[100][10];
-	//static String [][] listaAdministrativos = new String[100][10];
-
+	static int contadorClientes = 0;
+	static int contadorProfesionales = 0;
+	static int contadorAdministrativos = 0;
+	static int contadorUsuarios = 0;
+	static ArrayList <ArrayList<String>>   listaGeneral = new ArrayList <ArrayList<String>>();
+	static ArrayList <String>  listaUsuarios = new ArrayList <String>();
+	static ArrayList <String>  listaClientes = new ArrayList <String>();
+	static ArrayList <String>  listaProfesionales = new ArrayList <String>();
+	static ArrayList <String>  listaAdministrativos = new ArrayList <String>();
 	
 	
 	
@@ -122,9 +127,8 @@ public class EvaluacionJava {
 		nombre = detectarLetras("Ingrese el nombre: ", teclado);
 		fechaNac = detectarFecha("Ingrese la fecha de nacimiento", teclado);
 		run = detectarRun("Ingrese el run del usuario, sin digito verificador (7-8 digitos):",teclado);
-		listaUsuarios[0][0] = nombre;
-		listaUsuarios[0][1] = fechaNac;
-		listaUsuarios[0][2] = run;
+		
+
 	
 		System.out.println("★━━━━━━━━━━━━━━━━━━━━★");
 		System.out.println("¿Qué tipo de usuario es "+nombre+"? ");
@@ -160,9 +164,15 @@ public class EvaluacionJava {
 		direccion = detectarDireccion("Ingrese la dirección: ", teclado);
 		telefono = detectarTelefono("Ingrese telefono: ", teclado);
 		cantEmpleados = detectarNum("Cantidad empleados si es que corresponde:", teclado);
-		listaUsuarios[0][3] = direccion;
-		listaUsuarios[0][4] = telefono;
-		listaUsuarios[0][5] = cantEmpleados;
+		listaClientes.add(nombre);
+		listaClientes.add(fechaNac); 
+		listaClientes.add(run);
+		listaClientes.add(direccion);
+		listaClientes.add(telefono);
+		listaClientes.add(cantEmpleados);
+		contadorClientes = contadorClientes +1;
+		contadorUsuarios = contadorUsuarios +1;
+		
 				
 	}
 	
@@ -171,6 +181,14 @@ public class EvaluacionJava {
 		System.out.println("★━━━━━━━━━━━━━━━━━━━━★");
 		aniosExperiencia = detectarNum("Ingrese años de experiencia si es que corresponde: ", teclado);
 		departamento = detectarLetras("Ingrese el departamento: ", teclado);
+		listaProfesionales.add(nombre);
+		listaProfesionales.add(fechaNac); 
+		listaProfesionales.add(run);
+		listaProfesionales.add(aniosExperiencia);
+		listaProfesionales.add(departamento);
+		contadorProfesionales= contadorProfesionales +1;
+		contadorUsuarios = contadorUsuarios +1;
+		
 		
 	}
 	
@@ -179,6 +197,21 @@ public class EvaluacionJava {
 		System.out.println("★━━━━━━━━━━━━━━━━━━━━★");
 		funcion = detectarLetras("Ingrese la función: ", teclado);
 		nombreSuperior = detectarLetras("Ingrese nombre de superior si es que corresponde:", teclado);
+		listaAdministrativos.add(nombre);
+		listaAdministrativos.add(fechaNac); 
+		listaAdministrativos.add(run);
+		listaAdministrativos.add(funcion);
+		listaAdministrativos.add(nombreSuperior);
+		contadorAdministrativos = contadorAdministrativos +1;
+		contadorUsuarios = contadorUsuarios +1;
+		
+	}
+	
+	public static void listaGeneral() {
+		listaGeneral.add(listaClientes);
+		listaGeneral.add(listaAdministrativos);
+		listaGeneral.add(listaProfesionales);
+		
 	}
 	
 	public static void verMenu() {
@@ -194,15 +227,6 @@ public class EvaluacionJava {
 					 + "▪ 6- Salir. ");
 	}
 
-	public static void MostrarDatosMatriz() {
-		for (int fila = 0; fila < listaUsuarios.length; fila++) {
-			  for (int columna = 0; columna < listaUsuarios[fila].length; columna++) {
-			    System.out.print(listaUsuarios[fila][columna] + "  ");
-			  }
-			  System.out.println();
-			}
-		System.out.println(listaUsuarios);
-	}
 	
 	
 	
@@ -219,16 +243,28 @@ public class EvaluacionJava {
 			case "1":
 				System.out.println("Opción elegida: 1 Registrar usuario");
 				registrarUsuario();
-				
-
-				break;
+				listaGeneral();
 			case "2":
 				System.out.println("Opcion elegida: 2 Mostrar usuarios");
+				System.out.println("Total usuarios: "+listaGeneral);
 
 				break;
 			case "3":
 				System.out.println("Opcion elegida: 3 Contar usuarios por categoría");
-
+				System.out.println("Total usuarios: "+listaGeneral.size());
+				System.out.println("Total Clientes: "+contadorClientes);
+				System.out.println("Total Profesionales: "+contadorProfesionales);
+				System.out.println("Total Administrativos: "+contadorAdministrativos);
+				
+				System.out.println("\nTodos los clientes: ");
+				for (int x = 0; x <= listaClientes.size(); x++) {
+					System.out.println("\nNOMBRE: " + listaClientes.get(x) + " FECHA NACIMIENTO: " + listaClientes.get(x + 1) +
+					"RUN: "+ listaClientes.get(x + 2) + " DIRECCION: "+listaClientes.get(x + 3)+" TELEFONO: " +listaClientes.get(x + 4)+
+					" CANTIDAD EMPLEADOS: "+ listaClientes.get(x + 5));
+				}
+				
+				
+				
 				break;
 			case "4":
 				System.out.println("Opcion elegida: 4 Modificar usuarios");
@@ -251,70 +287,8 @@ public class EvaluacionJava {
 	}
 
 	public static void main(String[] args) {
-		menu();
-		
-		for (int fila = 0; fila < listaUsuarios.length; fila++) {
-		      for (int columna = 0; columna < listaUsuarios[fila].length; columna++) {
-		        System.out.print(listaUsuarios[fila][columna] + " ");
-		      }
-		      System.out.println();
-		    }
 		
 		
-	}
-
-}
-
-/*
- * for (int fila = 0; fila < listaUsuarios.length; fila++) {
-  for (int columna = 0; columna < listaUsuarios[fila].length; columna++) {
-    System.out.print(listaUsuarios[fila][columna] + "  ");
-  }
-  System.out.println();
-}
-
-
-WARD
-
-public static void registrarUsuarios() {
-	listaUsuarios = new String[100][10];
-
-	for (int i = 0; i < 100; i++) {
-		System.out.println("Registro de usuario " + (i + 1));
-		System.out.println("★━━━━━━━━━━━━━━━━━━━★");
-
-		nombre = detectarLetras("Ingrese el nombre: ", teclado);
-		listaUsuarios[i][0] = nombre;
-
-		fechaNac = detectarFecha("Ingrese la fecha de nacimiento (dd-mm-yyyy): ", teclado);
-		listaUsuarios[i][1] = fechaNac;
-
-		run = detectarLetras("Ingrese el RUN: ", teclado);
-		listaUsuarios[i][2] = run;
-
-		direccion = detectarDireccion("Ingrese la dirección: ", teclado);
-		listaUsuarios[i][3] = direccion;
-
-		telefono = detectarTelefono("Ingrese el teléfono: ", teclado);
-		listaUsuarios[i][4] = telefono;
-
-		cantEmpleados = detectarNum("Ingrese la cantidad de empleados: ", teclado);
-		listaUsuarios[i][5] = cantEmpleados;
-
-		aniosExperiencia = detectarNum("Ingrese los años de experiencia: ", teclado);
-		listaUsuarios[i][6] = aniosExperiencia;
-
-		departamento = detectarLetras("Ingrese el departamento: ", teclado);
-		listaUsuarios[i][7] = departamento;
-
-		funcion = detectarLetras("Ingrese la función: ", teclado);
-		listaUsuarios[i][8] = funcion;
-
-		nombreSuperior = detectarLetras("Ingrese el nombre del superior: ", teclado);
-		listaUsuarios[i][9] = nombreSuperior;
+			menu();
 	}
 }
-
-
- * 
- * */
