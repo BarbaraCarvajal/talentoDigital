@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EvaluacionJava {
+	private static final ArrayList<String> listaProfesioanales = null;
 	static Scanner teclado = new Scanner(System.in);
-	static String nombre, fechaNac, run, direccion, telefono, cantEmpleados,
-				  aniosExperiencia, departamento, funcion, nombreSuperior;
+	static String nombre = "nombre", fechaNac ="00-00-0000", run = "00000000", direccion ="calle", telefono="12345678", cantEmpleados="0",
+				  aniosExperiencia = "0", departamento = "dep", funcion = "ninguna", nombreSuperior = "jefa";
 	static int contadorClientes = 0, contadorProfesionales = 0, contadorAdministrativos = 0, contListaGeneral = 0;
-	static ArrayList <ArrayList<String>>   listaGeneral = new ArrayList <ArrayList<String>>();
-	static ArrayList <String>  listaUsuarios = new ArrayList <String>();
+	
+	static ArrayList <ArrayList<String>>listaGeneral = new ArrayList <ArrayList<String>>();
 	static ArrayList <String>  listaClientes = new ArrayList <String>();
 	static ArrayList <String>  listaProfesionales = new ArrayList <String>();
 	static ArrayList <String>  listaAdministrativos = new ArrayList <String>();
@@ -25,7 +26,7 @@ public class EvaluacionJava {
 			if (entrada.matches("[a-z A-Z\\s]+${1,}")) {
 				bandera = false;
 			}else {
-				System.out.println("Ingrese sólo letras...");
+				System.err.println("Ingrese sólo letras...");
 			}
 		}
 		return entrada;
@@ -44,7 +45,7 @@ public class EvaluacionJava {
 
 				bandera2 = false;
 			} else {
-				System.out.println("Escriba sólo números (8 digitos) ");
+				System.err.println("Escriba sólo números (8 digitos) ");
 			}
 		}
 		return entrada;
@@ -62,7 +63,7 @@ public class EvaluacionJava {
 
 				bandera3 = false;
 			} else {
-				System.out.println("Escribir un número válido");
+				System.err.println("Escribir un número válido");
 			}
 		}
 		return entrada;
@@ -78,7 +79,7 @@ public class EvaluacionJava {
 			if (entrada.matches("\\d{2}-\\d{2}-\\d{4}")) {
 				bandera4 = false;
 			}else {
-				System.out.println("Ingrese una fecha valida porfavor");
+				System.err.println("Ingrese una fecha valida porfavor");
 			}
 		}
 		return entrada;
@@ -94,7 +95,7 @@ public class EvaluacionJava {
 			if (entrada.matches("[a-z A-Z 0-9]{2,50}")) {
 				bandera5 = false;
 			}else {
-				System.out.println("Ingrese una dirección válida...");
+				System.err.println("Ingrese una dirección válida...");
 			}
 		}
 		return entrada;
@@ -109,7 +110,7 @@ public class EvaluacionJava {
 			if (entrada.matches("[0-9]{7,8}")) {
 				bandera6 = false;
 			}else {
-				System.out.println("Ingrese un RUN válido en chile por favor");
+				System.err.println("Ingrese un RUN válido en chile por favor");
 			}
 		}
 		return entrada;
@@ -124,7 +125,6 @@ public class EvaluacionJava {
 		nombre = detectarLetras("Ingrese el nombre: ", teclado);
 		fechaNac = detectarFecha("Ingrese la fecha de nacimiento", teclado);
 		run = detectarRun("Ingrese el run del usuario, sin digito verificador (7-8 digitos):",teclado);
-		
 
 	
 		System.out.println("★━━━━━━━━━━━━━━━━━━━━★");
@@ -136,7 +136,7 @@ public class EvaluacionJava {
 				+ "\n▪ 4- Volver al menú anterior  ");
 	
 		while(true) {
-			System.out.println("Ingrese su opción: ");
+			System.out.println("\nIngrese su opción: ");
 			String opcion = teclado.nextLine();
 			if (opcion.equals("1")){
 				datosCliente();
@@ -150,7 +150,7 @@ public class EvaluacionJava {
 			}else if(opcion.equals("4")){
 				menu();
 			}else {
-				System.out.println("Ingrese una opción correcta...(1,2 o 3");
+				System.err.println("\nIngrese una opción correcta...(1,2 o 3");
 			}
 		}
 	}
@@ -168,8 +168,7 @@ public class EvaluacionJava {
 		listaClientes.add(telefono);
 		listaClientes.add(cantEmpleados);
 		contadorClientes = contadorClientes +1;
-		
-		
+		//listaGeneral.add(listaClientes);
 				
 	}
 	
@@ -184,6 +183,7 @@ public class EvaluacionJava {
 		listaProfesionales.add(aniosExperiencia);
 		listaProfesionales.add(departamento);
 		contadorProfesionales= contadorProfesionales +1;
+		//listaGeneral.add(listaProfesionales);
 	
 	}
 	
@@ -198,7 +198,7 @@ public class EvaluacionJava {
 		listaAdministrativos.add(funcion);
 		listaAdministrativos.add(nombreSuperior);
 		contadorAdministrativos = contadorAdministrativos +1;
-	
+		//listaGeneral.add(listaAdministrativos);
 	}
 	
 	public static void listaGeneral() {
@@ -209,14 +209,14 @@ public class EvaluacionJava {
 	}
 	
 	public static void impresionContadores() {
-		System.out.println("Opcion elegida: 3 Contar usuarios por categoría");
+		
 		System.out.println("Total usuarios: "+contListaGeneral);
 		System.out.println("Total Clientes: "+contadorClientes);
 		System.out.println("Total Profesionales: "+contadorProfesionales);
 		System.out.println("Total Administrativos: "+contadorAdministrativos);
 	}
 	
-	public static void impresionListas() {
+	public static void impresionListaClientes() {
 		
 		
 		System.out.println("\nCLIENTES");
@@ -224,30 +224,127 @@ public class EvaluacionJava {
 			System.out.println("NONMBRE: " + listaClientes.get(posicion) + " FECHA NACIMIENTO: " + listaClientes.get(posicion + 1)
 			+" RUN: " +listaClientes.get(posicion+ 2) + " DIRECCION:  "+ listaClientes.get(posicion+3) + " TELEFONO: "+ listaClientes.get(posicion+4) + " CANTIDAD EMPLEADOS: "+listaClientes.get(posicion+ 5)  );
 		}
-	
+	}
+	public static void impresionListaProfesionales() {
+		
 		System.out.println("\nPROFESIONALES");
 		for (int posicion = 0; posicion < listaProfesionales.size(); posicion = posicion +5) {
 			System.out.println("NONMBRE: " + listaProfesionales.get(posicion) + " FECHA NACIMIENTO: " + listaProfesionales.get(posicion + 1)
 			+" RUN: " +listaProfesionales.get(posicion+ 2) + " AÑOS DE EXPERIENCIA:  "+ listaProfesionales.get(posicion+3) + " DEPARTAMENTO: "+ listaProfesionales.get(posicion+4) );
 		}
-
-		System.out.println("\nADMINISTRATIVOS");
+	}
+	public static void impresionListaAdministrativos() {
+		
+	
+		System.out.println("\nADMINISTRATIVOS\n");
 		for (int posicion = 0; posicion < listaAdministrativos.size(); posicion = posicion +5) {
 			System.out.println("NONMBRE: " + listaAdministrativos.get(posicion) + " FECHA NACIMIENTO: " + listaAdministrativos.get(posicion + 1)
 			+" RUN: " +listaAdministrativos.get(posicion+ 2) + " FUNCIÓN:  "+ listaAdministrativos.get(posicion+3) + " NOMBRE SUPERIOR: "+ listaAdministrativos.get(posicion+4) );
 		}
 	}
-	/*
-	public static void modificarUsuario(String rut) {
-		System.out.println("Ingrese el rut del usuario que desea editar: ");
-		String leerRut = detectarRun("Ingrese el run del usuario, sin digito verificador (7-8 digitos):",teclado);
-		
-		
+	
+	public static void listas() {
+		boolean cond = true;
+		while(cond) {
+			System.out.println("Qué lista quiere ver? "
+					+ "\n1) Lista Clientes"
+					+ "\n2) Lista Profesionales"
+					+ "\n3) Lista Administrativos"
+					+ "\n4) Lista de todos los usuarios");
+			String ver = teclado.nextLine();
+			if (ver.equals("1")){
+				impresionListaClientes();
+				cond = false;
+			}else if (ver.equals("2")){
+				impresionListaProfesionales();
+				cond = false;
+			}else if (ver.equals("3")) {
+				impresionListaAdministrativos();
+				cond = false;
+			}else if (ver.equals("4")) {
+				System.out.println("Todos los usuarios ingresados al sistema");
+				impresionListaClientes();
+				impresionListaProfesionales();
+				impresionListaAdministrativos();
+				cond = false;
+			}else {
+				System.err.println("Opción incorrecta... intente otra vez...");
+			}
 		}
-		
-		
+	}
+	
+		public static void modificarUsuario() {
+		    System.out.println("Ingrese el RUT del usuario que desea modificar:");
+		    String rut = teclado.nextLine();
+		    boolean usuarioEncontrado = false;
+		    
+		    for (int i = 0; i < listaGeneral.size(); i++) {
+		    	for (int x = 0; x < listaGeneral.get(i).size(); x++)
+		        if (listaGeneral.get(i).get(2).equals(rut)) {
+		            System.out.println("Ingrese los nuevos datos del cliente:");
+		            // pedir nuevos datos y reemplazar los antiguos
+		    	
+		    		listaGeneral.get(i).set(0,detectarLetras("Ingrese el nombre: ", teclado));
+		    		listaGeneral.get(i).set(1,detectarFecha("Ingrese la fecha de nacimiento", teclado));
+		    		listaGeneral.get(i).set(2,detectarRun("Ingrese el run del usuario, sin digito verificador (7-8 digitos):", teclado));
+		    		listaGeneral.get(i).set(3,detectarDireccion("Ingrese la dirección: ", teclado));
+		    		listaGeneral.get(i).set(4,detectarTelefono("Ingrese telefono: ", teclado));
+		    		listaGeneral.get(i).set(5,detectarNum("Cantidad empleados si es que corresponde:", teclado));
+		    		
+		    		
+		    		
+		            usuarioEncontrado = true;
+		            System.out.println("Usuario actualizado con exito!");
+		            break;
+		        }
+		    }
+		    if (!usuarioEncontrado) {
+		        for (int i = 0; i < listaProfesionales.size(); i++) {
+		            if (listaProfesionales.get(i).equals(rut)) {
+		                System.out.println("Ingrese los nuevos datos del profesional:");
+		                // pedir nuevos datos y reemplazar los antiguos
+		                
+		                listaProfesionales.set(0,detectarLetras("Ingrese el nombre: ", teclado));
+		                listaProfesionales.set(1,detectarFecha("Ingrese la fecha de nacimiento", teclado));
+		                listaProfesionales.set(2,detectarRun("Ingrese el run del usuario, sin digito verificador (7-8 digitos):",teclado));
+		                listaProfesionales.set(3,detectarNum("Ingrese años de experiencia si es que corresponde: ", teclado));
+		                listaProfesionales.set(4,detectarLetras("Ingrese el departamento: ", teclado));
+			    		
+		                usuarioEncontrado = true;
+		                System.out.println("Usuario actualizado con exito!");
+		                break;
+		            }
+		        }
+		    }
+		    if (!usuarioEncontrado) {
+		        for (int i = 0; i < listaAdministrativos.size(); i++) {
+		            if (listaAdministrativos.get(i).equals(rut)) {
+		                System.out.println("Ingrese los nuevos datos del administrativo:");
+		                // pedir nuevos datos y reemplazar los antiguos
+		                
+		                listaAdministrativos.set(0,detectarLetras("Ingrese el nombre: ", teclado));
+		                listaAdministrativos.set(1,detectarFecha("Ingrese la fecha de nacimiento", teclado));
+		                listaAdministrativos.set(2,detectarRun("Ingrese el run del usuario, sin digito verificador (7-8 digitos):",teclado));
+		                listaAdministrativos.set(3,detectarLetras("Ingrese la función: ", teclado));
+		                listaAdministrativos.set(4,detectarLetras("Ingrese nombre de superior si es que corresponde:", teclado));
+		                
+			    		usuarioEncontrado = true;
+		                System.out.println("Usuario actualizado con exito!");
+		                break;
+		            }
+		        }
+		    }
+		    if (!usuarioEncontrado) {
+		        System.out.println("El usuario con RUT " + rut + " no se encuentra en la lista.");
+		    }
 		}
-*/
+
+
+	public static void eliminarUsuario() {
+		System.out.println("Ingrese el run del usuario que desea eliminar");
+	}
+
+
 	
 	public static void verMenu() {
 		
@@ -275,32 +372,28 @@ public class EvaluacionJava {
 			case "1":
 				System.out.println("Opción elegida: 1 Registrar usuario");
 				registrarUsuario();
-				listaGeneral();
+				//listaGeneral();
 				contListaGeneral = contListaGeneral +1;
 				break;
 			case "2":
 				System.out.println("Opcion elegida: 2 Mostrar usuarios");
 				System.out.println("Total usuarios: ");
-				
-				for (int i = 0; i < listaGeneral.size(); i++) {
-					System.out.print(" " +listaGeneral.get(i));
-					System.out.println("");
-				}
-				
-
+				listas();
+				System.out.println(listaClientes);
 				break;
 			case "3":
+				System.out.println("Opcion elegida: 3 Contar usuarios por categoría ");
 				impresionContadores();
-				impresionListas();
+				
 				
 				break;
 			case "4":
 				System.out.println("Opcion elegida: 4 Modificar usuarios");
-				
+				modificarUsuario();
 				break;
 			case "5":
 				System.out.println("Opcion elegida: 5 Eliminar usuario");
-
+				eliminarUsuario();
 				break;
 			case "6":
 				System.out.println("Opcion elegida: 6 Salir");
@@ -308,12 +401,12 @@ public class EvaluacionJava {
 					condicion = false;
 					
 				}else {
-					System.out.println("Minimo 1 usuario por categoria!");
+					System.err.println("Minimo 1 usuario por categoria!");
 				}
 				break;
 			default:
 
-				System.out.println("Opcion incorrecta, vuelva a intentarlo...");
+				System.err.println("Opcion incorrecta, vuelva a intentarlo...");
 
 			}
 		}
