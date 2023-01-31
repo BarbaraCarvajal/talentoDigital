@@ -273,42 +273,42 @@ public class EvaluacionJava {
 		}
 	}
 	
-		public static void modificarUsuario() {
-		    System.out.println("Ingrese el RUT del usuario que desea modificar:");
-		    String rut = teclado.nextLine();
-		    boolean usuarioEncontrado = false;
-		    
-		    for (int i = 0; i < listaGeneral.size(); i++) {
-		    	for (int x = 0; x < listaGeneral.get(i).size(); x++)
-		        if (listaGeneral.get(i).get(2).equals(rut)) {
-		            System.out.println("Ingrese los nuevos datos del cliente:");
-		            // pedir nuevos datos y reemplazar los antiguos
-		    	
-		    		listaGeneral.get(i).set(0,detectarLetras("Ingrese el nombre: ", teclado));
-		    		listaGeneral.get(i).set(1,detectarFecha("Ingrese la fecha de nacimiento", teclado));
-		    		listaGeneral.get(i).set(2,detectarRun("Ingrese el run del usuario, sin digito verificador (7-8 digitos):", teclado));
-		    		listaGeneral.get(i).set(3,detectarDireccion("Ingrese la dirección: ", teclado));
-		    		listaGeneral.get(i).set(4,detectarTelefono("Ingrese telefono: ", teclado));
-		    		listaGeneral.get(i).set(5,detectarNum("Cantidad empleados si es que corresponde:", teclado));
-		    		
-		    		
-		    		
-		            usuarioEncontrado = true;
-		            System.out.println("Usuario actualizado con exito!");
-		            break;
-		        }
-		    }
+	public static void modificarUsuario() {
+		System.out.println("Ingrese el RUT del usuario que desea modificar:");
+		String rut = teclado.nextLine();
+		boolean usuarioEncontrado = false;
+
+		for (int i = 0; i < listaGeneral.size(); i++) {
+			for (int x = 0; x < listaGeneral.get(i).size(); x++) {
+				if (listaGeneral.get(i).get(2).equals(rut)) {
+					System.out.println("Ingrese los nuevos datos del cliente:");
+					// pedir nuevos datos y reemplazar los antiguos
+
+					listaGeneral.get(i).set(0, detectarLetras("Ingrese el nombre: ", teclado));
+					listaGeneral.get(i).set(1, detectarFecha("Ingrese la fecha de nacimiento", teclado));
+					listaGeneral.get(i).set(2, detectarRun("Ingrese el run del usuario, sin digito verificador (7-8 digitos):", teclado));
+					listaGeneral.get(i).set(3, detectarDireccion("Ingrese la dirección: ", teclado));
+					listaGeneral.get(i).set(4, detectarTelefono("Ingrese telefono: ", teclado));
+					listaGeneral.get(i).set(5, detectarNum("Cantidad empleados si es que corresponde:", teclado));
+
+					usuarioEncontrado = true;
+					System.out.println("Usuario actualizado con exito!");
+					break;
+				}
+			}
+		}
 		    if (!usuarioEncontrado) {
-		        for (int i = 0; i < listaProfesionales.size(); i++) {
-		            if (listaProfesionales.get(i).equals(rut)) {
+		        for (int i = 0; i < listaGeneral.size(); i++) {
+		        	for (int x = 0; x < listaGeneral.get(i).size(); x++)
+		            if (listaGeneral.get(i).get(2).equals(rut)) {
 		                System.out.println("Ingrese los nuevos datos del profesional:");
 		                // pedir nuevos datos y reemplazar los antiguos
 		                
-		                listaProfesionales.set(0,detectarLetras("Ingrese el nombre: ", teclado));
-		                listaProfesionales.set(1,detectarFecha("Ingrese la fecha de nacimiento", teclado));
-		                listaProfesionales.set(2,detectarRun("Ingrese el run del usuario, sin digito verificador (7-8 digitos):",teclado));
-		                listaProfesionales.set(3,detectarNum("Ingrese años de experiencia si es que corresponde: ", teclado));
-		                listaProfesionales.set(4,detectarLetras("Ingrese el departamento: ", teclado));
+		                listaGeneral.get(i).set(0,detectarLetras("Ingrese el nombre: ", teclado));
+		                listaGeneral.get(i).set(1,detectarFecha("Ingrese la fecha de nacimiento", teclado));
+		                listaGeneral.get(i).set(2,detectarRun("Ingrese el run del usuario, sin digito verificador (7-8 digitos):",teclado));
+		                listaGeneral.get(i).set(3,detectarNum("Ingrese años de experiencia si es que corresponde: ", teclado));
+		                listaGeneral.get(i).set(4,detectarLetras("Ingrese el departamento: ", teclado));
 			    		
 		                usuarioEncontrado = true;
 		                System.out.println("Usuario actualizado con exito!");
@@ -317,16 +317,17 @@ public class EvaluacionJava {
 		        }
 		    }
 		    if (!usuarioEncontrado) {
-		        for (int i = 0; i < listaAdministrativos.size(); i++) {
-		            if (listaAdministrativos.get(i).equals(rut)) {
+		    	for (int i = 0; i < listaGeneral.size(); i++) {
+		        	for (int x = 0; x < listaGeneral.get(i).size(); x++)
+		            if (listaGeneral.get(i).get(2).equals(rut)) {
 		                System.out.println("Ingrese los nuevos datos del administrativo:");
 		                // pedir nuevos datos y reemplazar los antiguos
 		                
-		                listaAdministrativos.set(0,detectarLetras("Ingrese el nombre: ", teclado));
-		                listaAdministrativos.set(1,detectarFecha("Ingrese la fecha de nacimiento", teclado));
-		                listaAdministrativos.set(2,detectarRun("Ingrese el run del usuario, sin digito verificador (7-8 digitos):",teclado));
-		                listaAdministrativos.set(3,detectarLetras("Ingrese la función: ", teclado));
-		                listaAdministrativos.set(4,detectarLetras("Ingrese nombre de superior si es que corresponde:", teclado));
+		                listaGeneral.get(i).set(0,detectarLetras("Ingrese el nombre: ", teclado));
+		                listaGeneral.get(i).set(1,detectarFecha("Ingrese la fecha de nacimiento", teclado));
+		                listaGeneral.get(i).set(2,detectarRun("Ingrese el run del usuario, sin digito verificador (7-8 digitos):",teclado));
+		                listaGeneral.get(i).set(3,detectarLetras("Ingrese la función: ", teclado));
+		                listaGeneral.get(i).set(4,detectarLetras("Ingrese nombre de superior si es que corresponde:", teclado));
 		                
 			    		usuarioEncontrado = true;
 		                System.out.println("Usuario actualizado con exito!");
