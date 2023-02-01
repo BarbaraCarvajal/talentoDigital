@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EvaluacionJava {
-	private static final ArrayList<String> listaProfesioanales = null;
+	
 	static Scanner teclado = new Scanner(System.in);
 	static String nombre = "nombre", fechaNac ="00-00-0000", run = "00000000", direccion ="calle", telefono="12345678", cantEmpleados="0",
 				  aniosExperiencia = "0", departamento = "dep", funcion = "ninguna", nombreSuperior = "jefa";
@@ -168,7 +168,7 @@ public class EvaluacionJava {
 		listaClientes.add(telefono);
 		listaClientes.add(cantEmpleados);
 		contadorClientes = contadorClientes +1;
-		//listaGeneral.add(listaClientes);
+		listaGeneral.add(listaClientes);
 				
 	}
 	
@@ -183,7 +183,7 @@ public class EvaluacionJava {
 		listaProfesionales.add(aniosExperiencia);
 		listaProfesionales.add(departamento);
 		contadorProfesionales= contadorProfesionales +1;
-		//listaGeneral.add(listaProfesionales);
+		listaGeneral.add(listaProfesionales);
 	
 	}
 	
@@ -198,15 +198,15 @@ public class EvaluacionJava {
 		listaAdministrativos.add(funcion);
 		listaAdministrativos.add(nombreSuperior);
 		contadorAdministrativos = contadorAdministrativos +1;
-		//listaGeneral.add(listaAdministrativos);
+		listaGeneral.add(listaAdministrativos);
 	}
-	
-	public static void listaGeneral() {
+	/*
+	public static void listaGeneralAtive() {
 		listaGeneral.add(listaClientes);
 		listaGeneral.add(listaAdministrativos);
 		listaGeneral.add(listaProfesionales);
 		
-	}
+	}*/
 	
 	public static void impresionContadores() {
 		
@@ -343,6 +343,7 @@ public class EvaluacionJava {
 
 	public static void eliminarUsuario() {
 		System.out.println("Ingrese el run del usuario que desea eliminar");
+		
 	}
 
 
@@ -380,7 +381,7 @@ public class EvaluacionJava {
 				System.out.println("Opcion elegida: 2 Mostrar usuarios");
 				System.out.println("Total usuarios: ");
 				listas();
-				System.out.println(listaClientes);
+				System.out.println(listaGeneral);
 				break;
 			case "3":
 				System.out.println("Opcion elegida: 3 Contar usuarios por categoría ");
