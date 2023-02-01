@@ -21,8 +21,6 @@ public class Main {
 		barbara.setTelefono(teclado.nextInt());
 		System.out.println("EDAD: ");
 		barbara.setEdad(teclado.nextInt());
-
-		
 		
 		//Trabajador barbara = new Trabajador(nombre, "Carvajal", "200672380", 934387785, 29 );
 		
@@ -34,12 +32,5 @@ public class Main {
 }
 
 
-/*
- * barbara.setNombres("Barbara");
-		barbara.setApellidos("Pérez");
-		barbara.setRun("123456789-0");
-		barbara.setTelefono(912345678);
-		barbara.setEdad(30);
- * 
- * */
+
  
