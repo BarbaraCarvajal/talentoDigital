@@ -11,6 +11,7 @@ public class Main {
 		
 		
 		Trabajador barbara = new Trabajador();
+		
 		System.out.println("NOMBRES: ");
 		barbara.setNombres(teclado.nextLine());
 		System.out.println("APELLIDOS: ");
@@ -28,7 +29,6 @@ public class Main {
 		System.out.println(barbara.nombreCompleto());
 		
 	}
-
 }
 
 
