@@ -4,11 +4,14 @@ public class Cliente {
 
 
 	private String rut, nombres, apellidos, telefono, afp, sistemaSalud, direccion, comuna, edad;
-
+	
+	
+	//Un constructor que no reciba parámetros
 	public Cliente() {
 			
 		}
-	
+
+	//Un constructor que reciba todos los atributos de la clase como parámetros
 	public Cliente(String rut, String nombres, String apellidos,String telefono, String afp, String sistemaSalud, String direccion,
 						String comuna, String edad) {
 	
