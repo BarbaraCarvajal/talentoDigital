@@ -2,8 +2,13 @@ package empresaClase13;
 
 public class Capacitacion {
 
-	private String identificador, rut, dia, hora, lugar, duracion, cantAsistentes;
-	private int numeroInterno;
+	private String identificador, rut, dia, hora, lugar, duracion ;
+	private int numeroInterno, cantAsistentes;
+	
+	public Capacitacion() {
+			
+		}
+	
 	/**
 	 * @param identificador
 	 * @param rut
@@ -14,8 +19,10 @@ public class Capacitacion {
 	 * @param cantAsistentes
 	 * @param numeroInterno
 	 */
+	
+	
 	public Capacitacion(String identificador, String rut, String dia, String hora, String lugar, String duracion,
-			String cantAsistentes, int numeroInterno) {
+			int cantAsistentes, int numeroInterno) {
 		
 		this.identificador = identificador;
 		this.rut = rut;
@@ -28,15 +35,12 @@ public class Capacitacion {
 	}
 	
 	
-	
 	@Override
 	public String toString() {
 		return "Capacitacion [identificador=" + identificador + ", rut=" + rut + ", dia=" + dia + ", hora=" + hora
 				+ ", lugar=" + lugar + ", duracion=" + duracion + ", cantAsistentes=" + cantAsistentes
 				+ ", numeroInterno=" + numeroInterno + "]";
 	}
-
-
 
 	/**
 	 * @return the identificador
@@ -113,13 +117,13 @@ public class Capacitacion {
 	/**
 	 * @return the cantAsistentes
 	 */
-	public String getCantAsistentes() {
+	public int getCantAsistentes() {
 		return cantAsistentes;
 	}
 	/**
 	 * @param cantAsistentes the cantAsistentes to set
 	 */
-	public void setCantAsistentes(String cantAsistentes) {
+	public void setCantAsistentes(int cantAsistentes) {
 		this.cantAsistentes = cantAsistentes;
 	}
 	/**

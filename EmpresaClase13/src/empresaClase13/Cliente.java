@@ -23,9 +23,6 @@ public class Cliente {
 		this.edad = edad;
 	}
 	
-	
-	
-
 	@Override
 	public String toString() {
 		return "\nDATOS CLIENTE" + "\n\\\\\\\\\\\\\\\\" + "\n* NOMBRES --> " + nombres + "\n* APELLIDOS --> "

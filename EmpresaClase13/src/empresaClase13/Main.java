@@ -37,7 +37,6 @@ public class Main {
 		// CREAMOS UN OBJETO DE LA CLASE USUARIO
 		Usuario luis = new Usuario();
 		// LE AGREGAMOS DATOS
-		// Nombre, fechaNac, run;
 		System.out.println("NOMBRE");
 		luis.setNombre(sc.nextLine());
 		System.out.println("FECHA NACIMIENTO");
@@ -46,6 +45,28 @@ public class Main {
 		luis.setRun(sc.nextLine());
 		
 		System.out.println(luis.toString());
+		
+		//CREAMOS UN OBJETO DE LA CLASE CAPACITACION
+		Capacitacion bootcamp = new Capacitacion();
+		// LE AGREGAMOS DATOS
+		System.out.println("IDENTIFICADOR");
+		bootcamp.setIdentificador(sc.nextLine());
+		System.out.println("RUT");
+		bootcamp.setRut(sc.nextLine());
+		System.out.println("DIA");
+		bootcamp.setDia(sc.nextLine());
+		System.out.println("HORA");
+		bootcamp.setHora(sc.nextLine());
+		System.out.println("LUGAR");
+		bootcamp.setLugar(sc.nextLine());
+		System.out.println("DURACION");
+		bootcamp.setDuracion(sc.nextLine());
+		System.out.println("CANTIDAD ASISTENTES");
+		bootcamp.setCantAsistentes(sc.nextInt());
+		sc.nextLine();
+		System.out.println("NUMERO INTERNO");
+		bootcamp.setNumeroInterno(sc.nextInt());
+		sc.nextLine();
 		
 	}
 

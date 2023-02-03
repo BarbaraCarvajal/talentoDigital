@@ -8,7 +8,7 @@ public class Usuario {
 	 * 
 	 */
 	public Usuario() {
-		super();
+		
 	}
 
 	/** 
@@ -24,14 +24,12 @@ public class Usuario {
 		this.run = run;
 	}
 	
-	
-
 	@Override
 	public String toString() {
 		return "Usuario "
-				+"\nNombre=" + Nombre + 
-				"\nfechaNac=" + fechaNac + 
-				"\nrun=" + run ;
+				+"\nNombre --> " + Nombre + 
+				"\nfechaNac --> " + fechaNac + 
+				"\nrun --> " + run ;
 	}
 
 	/**
