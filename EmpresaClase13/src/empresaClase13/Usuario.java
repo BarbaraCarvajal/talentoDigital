@@ -10,7 +10,6 @@ public class Usuario {
 	public Usuario() {
 		
 	}
-
 	/** 
 	 * 
 	 * @param nombre

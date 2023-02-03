@@ -68,5 +68,7 @@ public class Main {
 		bootcamp.setNumeroInterno(sc.nextInt());
 		sc.nextLine();
 		
+		System.out.println(bootcamp.toString());
+		
 	}
 }
