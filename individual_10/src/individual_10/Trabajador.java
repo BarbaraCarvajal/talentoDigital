@@ -40,9 +40,24 @@ public class Trabajador {
 	
 	
 	
-	
-	
-	
+	/**
+	 * @param nombres
+	 * @param apellidos
+	 * @param run
+	 * @param telefono
+	 * @param edad
+	 */
+	public Trabajador(String nombres, String apellidos, String run, int telefono, int edad) {
+		
+		this.nombres = nombres;
+		this.apellidos = apellidos;
+		this.run = run;
+		this.telefono = telefono;
+		this.edad = edad;
+	}
+
+
+
 	public String getNombres() {
 		return nombres;
 	}
@@ -100,7 +115,19 @@ public class Trabajador {
 	//Desarrolle el método descomponerRun(), el cual debe retornar un número entero
 	//correspondiente a todo lo que está en el RUN antes del guion y del dígito verificador.
 	
-
+	public int descomponerRun() {
+		
+		int runEntero = 0;
+		
+		for (int x = 0; x < run.length()-2; x++) {
+			
+			char c = run.charAt (x); System.out.print(c);
+			
+			 runEntero = Character.getNumericValue(c);
+		}
+		return runEntero;
+		
+	}
 	
 	
 }

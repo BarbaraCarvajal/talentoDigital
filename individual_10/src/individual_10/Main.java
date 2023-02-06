@@ -28,6 +28,9 @@ public class Main {
 		System.out.println(barbara.toString());
 		System.out.println(barbara.nombreCompleto());
 		
+		System.out.println("\nRut como número entero ↓ ");
+		barbara.descomponerRun();
+		
 	}
 }
 
