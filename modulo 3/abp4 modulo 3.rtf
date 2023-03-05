@@ -1,0 +1,63 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2706
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 /*\
+1. Genere tres consultas de inserci\'f3n de clientes; en las primeras dos deben ir incorporados todos los datos, mientras que la restante debe estar considerado solo el identificador de cliente, nombres y apellidos.\
+*/\
+\
+INSERT into clientes (idcliente, nombres, apellidos, direccion, telefono)\
+VALUES (4, 'Camilo', 'Monsalves', 'casa #123', 876765543);\
+\
+INSERT into clientes (idcliente, nombres, apellidos, direccion, telefono)\
+VALUES (5, 'Romina', 'Cornejo', 'casa #009', 343223322);\
+\
+INSERT into clientes (idcliente, nombres, apellidos)\
+VALUES (6, 'Mokita', 'gatita hermosa');\
+\
+\
+/*\
+2. Genere cinco consultas de inserci\'f3n de registros en la tabla ventas. No se pide un formato espec\'edfico de consulta de inserci\'f3n. Estas ventas deben estar asociadas l\'f3gicamente a alguno de los clientes antes creados.\
+*/\
+\
+INSERT INTO ventas (idventa, vendedor, cantarticulos, subtotal, impuesto, total, clientes_idcliente) \
+VALUES \
+(5,'barbara carvajal',3,8000,2500,10500,4),\
+(6,'rocio gacitua',2,8000,2000,10000,2),\
+(7,'martin collao',1,5000,1500,6500,3),\
+(8,'benjamin covarrubias',2,2500,1200,3700,4),\
+(9,'llate feita',4,8000,1800,9800,1);\
+\
+\
+/*\
+3. Genere una consulta que permita actualizar el campo total de la tabla ventas, igual\'e1ndolo a la suma del subtotal y el impuesto.\
+*/\
+\
+UPDATE ventas\
+SET total = subtotal + impuesto;\
+\
+\
+/*\
+4. Finalmente, genere una consulta en la que se elimine un cliente a trav\'e9s de su identificador (idcliente), y posterior a eso otra consulta que elimine todas las ventas asociadas a dicho cliente (siempre de acuerdo con el campo idcliente).\
+*/\
+\
+DELETE FROM ventas\
+WHERE clientes_idcliente =2;\
+\
+DELETE FROM clientes\
+WHERE idcliente = 2;\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}
